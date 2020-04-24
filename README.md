@@ -62,7 +62,7 @@ TBD
 
 To get started with Health Assistant solution, you can choose any of the following two approaches - 
 
-### Approach 1 : Build and Compile the Solution
+#### Approach 1 : Build and compile the solution
 Take git clone at a location of your choice on your system.
 
 ```
@@ -75,7 +75,7 @@ After clone verify the following folders :
 - CFC_Monitoring : Monitor chatbot API
 - CFC_MonitoringUI : Monitor chatbot UI
 
-
+Use the README.md files to build and compile plugins as mentioned below -
 
 | Plugin                     | README |
 | ------                     | ------ |
@@ -84,9 +84,17 @@ After clone verify the following folders :
 | Monitoring Backend Service | [README.md](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/CFC_Monitoring/README.md) |
 | Moniroting Dashboard       | [README.md](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/CFC_MonitoringUI/README.md) |
 
-### Approach 2 : Use the existing deployed insfrasture 
+#### Approach 2 : Use the existing deployed infrastructure 
 
-TBD
+Use the following URL's to access the existing infrastructure -
+###### Monitor Dashboard
+```
+https://c4c-monitorapi.df.r.appspot.com/doctors
+```
+###### Patient App
+```
+https://c4c-monitor.df.r.appspot.com/login
+```
 
 ## Live demo
 
