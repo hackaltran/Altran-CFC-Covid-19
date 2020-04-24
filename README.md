@@ -68,10 +68,10 @@ To get started, take clone of the following repository to your local machine.
 ```
 After clone verify the following folders :
 
-- CFC_API
-- CFC_UI
-- CFC_Monitoring
-- CFC_MonitoringUI
+- CFC_API : Patient API
+- CFC_UI : Patient UI
+- CFC_Monitoring : Monitor chatbot API
+- CFC_MonitoringUI : Monitor chatbot UI
 
 ### Prerequisites
 
@@ -83,104 +83,101 @@ https://nodejs.org/en/
 ```
 - docker v19 or above
 ```
-TBD
+https://www.docker.com/products/docker-desktop
 ```
 - IBM cli
 ```
-TBD
+https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli
 ```
 - IBM cloud account
 ```
-TBD
+https://cloud.ibm.com/
 ```
 
 
-### Installing
-#### Step 1
-###### creating Docker image 
+### Installation
 
- The following command will be use to deploy the application on IBM Cloud kubernetes cluster
+#### installing CFC_API : Patient API
+Below Steps will be used to create your own image repository, build the Docker image and finally deploy on the IBM Cloud Kubernetes cluster
 
- Before executing the command, you need to create a registry on IBM Cloud.
- ```
-   we are using cfc_altran as registry.
-   Below are the steps to create registry (https://cloud.ibm.com/docs/Registry?topic=registry-getting-started#gs_registry_cli_install)
-   Log in to IBM Cloud => ibmcloud login
-   Add a namespace to create your own image repository => ibmcloud cr namespace-add cfc_altran
-   To ensure that your namespace is created => ibmcloud cr namespace-list
+###### step 1- Creating image repository on IBM Cloud 
 
- 
-  ```
-  > You have to run these command alongside dockerfile.
-```bash
+Before building the Docker image, first you need to add a namespace to create your own image repository on IBM Cloud.
 
-# Building new ubuntu image using Dockerfile to deploy CFC_API code on it
+Below commands are using 'cfc_altran' as registry. Note that it needs to be unique.
+
+- Log in to IBM Cloud 
+```
+ibmcloud login
+```
+- Upon successful login, add a namespace to create your own image repository
+```
+ibmcloud cr namespace-add cfc_altran
+```
+- To ensure that your namespace is created, look for registry name in the command output 
+```
+ibmcloud cr namespace-list
+```
+###### Step 2- Creating Docker image
+
+You have to run these command alongside Dockerfile.
+
+- Building new ubuntu image using Dockerfile to deploy CFC_API code on it
+```
 docker build -t cfc-nodejs-app .
-
-# Tag docker image to upload to IBM Cloud Kubernetes cluster
+```
+- Tag docker image to upload to IBM Cloud Kubernetes cluster
+```
 docker tag cfc-nodejs-app us.icr.io/cfc_altran/cfc-nodejs-repo
-
-# Try IBM cloud login to be on safe side
+```
+- [_Optional step_] Try IBM Cloud Registry login to validate user and region 
+```
 ibmcloud cr login
-
-# To be on safe side, update region also
+```
+- [_Optional step_] Update region to ensure that image is uploaded under correct region
+```
 ibmcloud cr region-set us-south
-
-# Push docker image to IBM Cloud Kubernetes cluster
+```
+- Push docker image to IBM Cloud Registry
+```
 docker push us.icr.io/cfc_altran/cfc-nodejs-repo
-
-# After push, list image present on IBM Cloud to confirm
+```
+- List image present on IBM Cloud Registry and ensure respective image is there in command output
+```
 ibmcloud cr image-list
-
 ```
-#### Step 2
-###### Kubernets installation
+###### Step 3- Kubernetes installation
 
-- Below commands need to be executed manually on IBM Cloud via browser based 'Kubernetes Terminal'
-- Go to Clusters on IBM Cloud -> click the cluster -> 'Add-ons' -> click 'Install' for 'Kubernetes Terminal'
- - This will start installation and when button label change to 'Terminal', click on it to open terminal'
- ```bash
+__NOTE__: Below commands need to be executed manually on IBM Cloud via browser based 'Kubernetes Terminal'
 
-# Start
+`Go to Clusters on IBM Cloud -> click the cluster -> click 'Add-ons' -> click 'Install' for 'Kubernetes Terminal'`
+
+This will start installation and when button label change to 'Terminal', click on it to open terminal'
+
+- [In case of redeployment] Delete the respective deployment & service if already exists
+```
+kubectl delete deployment cfcaltran2020
+kubectl delete service cfcaltran2020-service
+```
+- Start/Create the deployment
+```
 kubectl run cfcaltran2020 --image=us.icr.io/cfc_altran/cfc-nodejs-repo:latest
-
-# Expose your application to the internet
-kubectl expose deployment/cfcaltran2020 --type=NodePort --port=8080 --name=cfcaltran2020-service --target-port=8080
-
-# Get the NodePort and use it for all requests.
-# Application will listen on NodePort only and not on port specified while starting the NodeJS application.
-kubectl describe service cfcaltran2020-service
-
-# Get the Worker node Public IP on which request will be hit
-ibmcloud ks workers cfc_nodejs_cluster
-
-# Below is example GET API call
-# curl -kX GET http://<ip>:<port>/api/patient/<patientIP>
- ```
-
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why, if you were using something like `mocha` for instnance
-
-```bash
-npm install mocha --save-dev
-vi test/test.js
-./node_modules/mocha/bin/mocha
 ```
-
-### And coding style tests
-
-Explain what these tests test and why, if you chose `eslint` for example
-
-```bash
-npm install eslint --save-dev
-npx eslint --init
-npx eslint sample-file.js
+- Expose your application to the internet
+```
+kubectl expose deployment/cfcaltran2020 --type=NodePort --port=8080 --name=cfcaltran2020-service --target-port=8080
+```
+- Get the NodePort and use it for all requests. Application will listen on NodePort only and not on port specified while starting the NodeJS application.
+```
+kubectl describe service cfcaltran2020-service
+```
+- Get the Worker node Public IP on which request will be hit
+```
+ibmcloud ks workers cfc_nodejs_cluster
+```
+- Below is example GET API call
+```
+curl -kX GET http://<ip>:<port>/api/patient/<patientIP>
 ```
 
 ## Live demo
