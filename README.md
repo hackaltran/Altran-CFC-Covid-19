@@ -63,10 +63,14 @@ TBD
 
 To get started take clone of following repository to your local machine.
 
-- https://github.com/hackaltran/CFC_API
-- https://github.com/hackaltran/CFC_UI
-- https://github.com/hackaltran/CFC_Monitoring
-- https://github.com/hackaltran/CFC_MonitoringUI
+- CFC_API
+- CFC_UI
+- CFC_Monitoring
+- CFC_MonitoringUI
+
+```
+   git clone git@github.com:hackaltran/Altran-CFC-Covid-19.git
+```
 
 ### Prerequisites
 
