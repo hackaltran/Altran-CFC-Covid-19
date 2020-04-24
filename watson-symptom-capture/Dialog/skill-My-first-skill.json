@@ -1,0 +1,1670 @@
+{
+  "intents": [
+    {
+      "intent": "Age",
+      "examples": [
+        {
+          "text": "what is your age?"
+        },
+        {
+          "text": "How old are you?"
+        },
+        {
+          "text": "age"
+        },
+        {
+          "text": "old"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "sys-number",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "experience",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Diarrhea",
+          "synonyms": [
+            "diarrhea",
+            "diarrhoea",
+            "vomiting",
+            "constipation",
+            "gastroenteritis",
+            "nausea",
+            "indigestion",
+            "bloating",
+            "flatulence",
+            "diarrheal",
+            "dysentery",
+            "cramping",
+            "giardiasis",
+            "gastritis",
+            "heartburn",
+            "dizziness",
+            "vomitting",
+            "dysentry",
+            "stomachache",
+            "hyperacidity"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "bodyache",
+          "synonyms": [
+            "Bodyache",
+            "stomachache",
+            "headachy",
+            "achiness",
+            "myalgias",
+            "chilliness",
+            "achey",
+            "arthralgias",
+            "kuomintang",
+            "nauseas",
+            "ache",
+            "crampy",
+            "queasiness",
+            "myalgia"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Headache",
+          "synonyms": [
+            "headache",
+            "migraines",
+            "pain",
+            "drowsiness"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Restlessness",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "fatigue",
+          "synonyms": [
+            "restlessness",
+            "dehydration",
+            "pain",
+            "moodiness",
+            "weakness",
+            "depression",
+            "drowsiness",
+            "constipation"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "sleepiness",
+          "synonyms": [
+            "hypoglycaemia",
+            "impulsivity",
+            "apnea",
+            "nausea",
+            "hallucinations",
+            "hypotension",
+            "sleep",
+            "listlessness"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "cough with sputum",
+          "synonyms": [
+            "cough",
+            "coughs",
+            "wheeze",
+            "sniffle",
+            "runny",
+            "asthma",
+            "sneeze",
+            "fevers"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "confusion",
+          "synonyms": [
+            "ambiguity",
+            "bewilderment",
+            "chaos",
+            "frustration",
+            "confusions",
+            "disorientation",
+            "uneasiness",
+            "unease",
+            "misunderstandings",
+            "consternation",
+            "disappointment",
+            "perplexity",
+            "uncertainty"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "laboured breathing",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "dry cough",
+          "synonyms": [
+            "cough",
+            "problem",
+            "problems",
+            "coughing",
+            "trouble",
+            "difficulty",
+            "concern",
+            "problematic",
+            "New or worsening cough",
+            "worsening cough"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "sore throat",
+          "synonyms": [
+            "sore",
+            "throat pain",
+            "not able to breath",
+            "breathing problem",
+            "breathing problems"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "None",
+          "synonyms": [
+            "none of these",
+            "no",
+            "dont want to share",
+            "none of the above",
+            "nothing",
+            "neither",
+            "none"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Running nose",
+          "synonyms": [
+            "nose",
+            "tongue",
+            "sinuses"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "breathing_rate",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Very High",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Normal",
+          "synonyms": [
+            "Normal"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "High",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "gender",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "male",
+          "synonyms": [
+            "Male",
+            "Men",
+            "Man",
+            "m",
+            "ma",
+            "mal"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "others",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "female",
+          "synonyms": [
+            "Women",
+            "Woman",
+            "Female",
+            "f",
+            "fe",
+            "fem",
+            "fema",
+            "femal"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "temperature",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Very High Fever",
+          "synonyms": [
+            "104.8",
+            "104.9",
+            "104.10",
+            "105",
+            "105.0",
+            "very high",
+            "too much",
+            "high",
+            "feeling sick",
+            "102.1",
+            "102.2",
+            "102.3",
+            "102.4",
+            "102.5",
+            "102.6",
+            "102.7",
+            "102.8",
+            "102.9",
+            "102.10",
+            "103.0",
+            "103",
+            "103.1",
+            "103.2",
+            "103.3",
+            "103.4",
+            "103.5",
+            "103.6",
+            "103.7",
+            "103.8",
+            "103.9",
+            "103.10",
+            "104",
+            "104.0",
+            "104.1",
+            "104.2",
+            "104.3",
+            "104.4",
+            "104.5",
+            "104.6",
+            "104.7"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "High fever",
+          "synonyms": [
+            "feeling low",
+            "Yes",
+            "little bit",
+            "a little",
+            "yeah",
+            "99.6",
+            "99.7",
+            "99.8",
+            "99.9",
+            "99.10",
+            "100",
+            "100.1",
+            "100.2",
+            "100.3",
+            "100.4",
+            "100.5",
+            "100.6",
+            "100.7",
+            "100.8",
+            "100.9",
+            "100.10",
+            "101",
+            "101.1",
+            "101.2",
+            "101.3",
+            "101.4",
+            "101.5",
+            "101.6",
+            "101.7",
+            "101.8",
+            "101.9",
+            "101.10",
+            "102",
+            "102.0",
+            "high"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Medium",
+          "synonyms": [
+            "medium",
+            "98.7",
+            "98.8",
+            "98.9",
+            "98.10",
+            "99.1",
+            "99.2",
+            "99.3",
+            "99.4",
+            "99.5",
+            "mediumsized",
+            "moderate"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Normal",
+          "synonyms": [
+            "Normal",
+            "correct",
+            "no fever",
+            "98",
+            "98.1",
+            "98.2",
+            "98.3",
+            "98.4",
+            "98.5",
+            "98.6",
+            "96",
+            "96.1",
+            "96.2",
+            "96.3",
+            "96.4",
+            "96.5",
+            "96.6",
+            "96.7",
+            "96.8",
+            "96.9",
+            "96.10",
+            "97",
+            "97.0",
+            "97.1",
+            "97.2",
+            "97.3",
+            "97.4",
+            "97.5",
+            "97.6",
+            "97.7",
+            "97.8",
+            "97.9",
+            "97.10",
+            "98.0",
+            "96.0",
+            "fine",
+            "good"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "heartRate",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Very High",
+          "synonyms": [
+            "very high",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "96",
+            "97",
+            "98",
+            "99",
+            "100",
+            "101",
+            "102",
+            "103",
+            "104",
+            "105",
+            "106",
+            "107",
+            "108",
+            "109",
+            "110",
+            "111",
+            "112",
+            "113",
+            "114"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Normal",
+          "synonyms": [
+            "normal",
+            "70",
+            "71",
+            "72",
+            "73",
+            "74",
+            "75",
+            "76",
+            "77",
+            "78",
+            "79"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Low",
+          "synonyms": [
+            "low",
+            "60",
+            "61",
+            "62",
+            "63",
+            "64",
+            "65",
+            "66",
+            "67",
+            "68",
+            "69"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Medium",
+          "synonyms": [
+            "80",
+            "medium",
+            "81",
+            "82",
+            "83",
+            "84",
+            "85"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "High",
+          "synonyms": [
+            "high",
+            "86",
+            "87",
+            "88",
+            "89",
+            "90"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "family",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Myself",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Child",
+          "synonyms": [
+            "kid"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "spouse",
+          "synonyms": [
+            "wife"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Someone",
+          "synonyms": [
+            "Others"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-location",
+      "values": [],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "travelled",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Yes",
+          "synonyms": [
+            "yeah",
+            "have travelled",
+            "have travelled internationally",
+            "was travelled",
+            "was travelling"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "No",
+          "synonyms": [
+            "not travelled internationally",
+            "not travelled",
+            "have not travelled",
+            "was not travelled",
+            "was not travelling"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-percentage",
+      "values": [],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    },
+    "from-sample": true
+  },
+  "webhooks": [
+    {
+      "url": "http://184.172.241.147:30222/api/patient/addsymptom",
+      "name": "main_webhook",
+      "headers": []
+    }
+  ],
+  "dialog_nodes": [
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_8_1587319928069",
+      "variable": "$experience",
+      "dialog_node": "slot_9_1587320106172"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "What is your breathing rate right now?",
+            "Don't worry. Can you measure your breathing rate and share it with me.",
+            "I'd like to know your breathing rate (Normal, High, Very high) --"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_4_1587372626443",
+      "event_name": "focus",
+      "dialog_node": "handler_3_1587372626458",
+      "previous_sibling": "handler_4_1587372626458"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_4_1587372626443",
+      "context": {
+        "breathing_rate": "@breathing_rate"
+      },
+      "conditions": "@breathing_rate",
+      "event_name": "input",
+      "dialog_node": "handler_4_1587372626458"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please share your valid mobile number"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_10_1587487833987",
+      "event_name": "focus",
+      "dialog_node": "handler_2_1587487834000",
+      "previous_sibling": "handler_4_1587487834000"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_10_1587487833987",
+      "context": {
+        "user_id": "@sys-number"
+      },
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_4_1587487834000"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_5_1586604971622",
+      "variable": "$travelled",
+      "dialog_node": "slot_8_1586606317042",
+      "previous_sibling": "response_4_1586613831754"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_5_1586604971622",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1586605171687",
+      "previous_sibling": "slot_8_1586606317042"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "time": 5000,
+            "typing": true,
+            "response_type": "pause"
+          },
+          {
+            "values": [
+              {
+                "text": "Thank you! Don't worry, I will be helping you with the analysis details on the scanning conducted with me. Please get your analysis information and related advisory required through mobile app. "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_5_1586604971622",
+      "conditions": "@travelled",
+      "dialog_node": "response_4_1586613831754"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "what is your experience?",
+            "How are you feeling?",
+            "Don't worry, Tell us about your symptoms"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "parent": "slot_9_1587320106172",
+      "event_name": "focus",
+      "dialog_node": "handler_6_1587320106210",
+      "previous_sibling": "handler_4_1587320106210"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_9_1587320106172",
+      "context": {
+        "experience": "@experience"
+      },
+      "conditions": "@experience",
+      "event_name": "input",
+      "dialog_node": "handler_4_1587320106210"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "What is your heart rate right now?",
+            "Don't worry, Can you please measure it and share with me.",
+            "No worries, i'd like to have information about your heart rate (Low/Normal/Medium/High)"
+          ],
+          "selection_policy": "random"
+        }
+      },
+      "parent": "slot_9_1586600039797",
+      "event_name": "focus",
+      "dialog_node": "handler_10_1586600039807",
+      "previous_sibling": "handler_8_1586600039807"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_9_1586600039797",
+      "context": {
+        "heart_rate": "@heartRate"
+      },
+      "conditions": "@heartRate",
+      "event_name": "input",
+      "dialog_node": "handler_8_1586600039807"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please share your user ID? "
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_5_1587541081419",
+      "event_name": "focus",
+      "dialog_node": "handler_2_1587541081433",
+      "previous_sibling": "handler_8_1587541081433"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_5_1587541081419",
+      "context": {
+        "user_id": "@sys-number"
+      },
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_8_1587541081433"
+    },
+    {
+      "type": "event_handler",
+      "parent": "node_5_1587047935172",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1587048301925",
+      "previous_sibling": "response_3_1587485077186"
+    },
+    {
+      "type": "slot",
+      "parent": "node_5_1587047935172",
+      "variable": "$user_id",
+      "dialog_node": "slot_8_1587048302588",
+      "previous_sibling": "handler_1_1587048301925"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_5_1587047935172",
+      "disabled": true,
+      "dialog_node": "response_3_1587485077186",
+      "previous_sibling": "response_4_1587482484802"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "time": 3000,
+            "typing": true,
+            "response_type": "pause"
+          },
+          {
+            "values": [
+              {
+                "text": "Thank you! $webhook_result_2.userName,  Your user Id is recognized"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "Please confirm if patient belongs to your family",
+            "options": [
+              {
+                "label": "Myself",
+                "value": {
+                  "input": {
+                    "text": "Myself"
+                  }
+                }
+              },
+              {
+                "label": "Spouse",
+                "value": {
+                  "input": {
+                    "text": "Spouse"
+                  }
+                }
+              },
+              {
+                "label": "Child",
+                "value": {
+                  "input": {
+                    "text": "Child"
+                  }
+                }
+              },
+              {
+                "label": "Others",
+                "value": {
+                  "input": {
+                    "text": "Others"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_5_1587047935172",
+      "disabled": true,
+      "conditions": "",
+      "dialog_node": "response_4_1587482484802"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please share your userID mentioned in App"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_8_1587059990710",
+      "event_name": "focus",
+      "dialog_node": "handler_6_1587059990713",
+      "previous_sibling": "handler_2_1587059990713"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_8_1587059990710",
+      "context": {
+        "user_id": "@sys-number"
+      },
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_2_1587059990713"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_1_1587372231376",
+      "variable": "$breathing_rate",
+      "dialog_node": "slot_4_1587372626443"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Please share your user Id."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_8_1587048302588",
+      "event_name": "focus",
+      "dialog_node": "handler_10_1587048302596",
+      "previous_sibling": "handler_1_1587048302596"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_8_1587048302588",
+      "context": {
+        "user_id": "@sys-number"
+      },
+      "conditions": "@sys-number",
+      "event_name": "input",
+      "dialog_node": "handler_1_1587048302596"
+    },
+    {
+      "type": "frame",
+      "title": "HeartRate",
+      "output": {
+        "generic": [
+          {
+            "time": 4000,
+            "typing": true,
+            "response_type": "pause"
+          },
+          {
+            "title": "Please let us know your about Heart Rate",
+            "options": [
+              {
+                "label": "Low",
+                "value": {
+                  "input": {
+                    "text": "low"
+                  }
+                }
+              },
+              {
+                "label": "Normal",
+                "value": {
+                  "input": {
+                    "text": "normal"
+                  }
+                }
+              },
+              {
+                "label": "Medium",
+                "value": {
+                  "input": {
+                    "text": "medium"
+                  }
+                }
+              },
+              {
+                "label": "High",
+                "value": {
+                  "input": {
+                    "text": "high"
+                  }
+                }
+              },
+              {
+                "label": "Very High",
+                "value": {
+                  "input": {
+                    "text": "very high"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_9_1586590844842",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_10_1586593055582"
+      },
+      "conditions": "@breathing_rate || anything_else",
+      "dialog_node": "node_1_1587372231376",
+      "previous_sibling": "node_8_1587319928069"
+    },
+    {
+      "type": "standard",
+      "title": "Testing Performing - Temperature",
+      "output": {
+        "generic": [
+          {
+            "title": "Temperature",
+            "options": [
+              {
+                "label": "Normal (96°F-98.6°F)",
+                "value": {
+                  "input": {
+                    "text": "normal"
+                  }
+                }
+              },
+              {
+                "label": "Medium (98.7°F-99.5°F) ",
+                "value": {
+                  "input": {
+                    "text": "medium"
+                  }
+                }
+              },
+              {
+                "label": "High Fever (99.6°F-102°F) ",
+                "value": {
+                  "input": {
+                    "text": " high"
+                  }
+                }
+              },
+              {
+                "label": "Very High Fever (>102°F)",
+                "value": {
+                  "input": {
+                    "text": "very high"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_9_1586590844842",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_8_1586591726358"
+      },
+      "conditions": "$user_id",
+      "dialog_node": "node_2_1586590984448",
+      "previous_sibling": "slot_5_1587541081419"
+    },
+    {
+      "type": "frame",
+      "title": "Testing Performing - Experience",
+      "output": {
+        "generic": [
+          {
+            "title": "Are you experiencing any of the symptoms below?",
+            "options": [
+              {
+                "label": "Running nose",
+                "value": {
+                  "input": {
+                    "text": "cough"
+                  }
+                }
+              },
+              {
+                "label": "Sore Throat",
+                "value": {
+                  "input": {
+                    "text": "sore throat"
+                  }
+                }
+              },
+              {
+                "label": "Diarrhea",
+                "value": {
+                  "input": {
+                    "text": "diarrhea"
+                  }
+                }
+              },
+              {
+                "label": "Headache",
+                "value": {
+                  "input": {
+                    "text": "headache"
+                  }
+                }
+              },
+              {
+                "label": "Dry Cough",
+                "value": {
+                  "input": {
+                    "text": "dry cough"
+                  }
+                }
+              },
+              {
+                "label": "Cough with sputum",
+                "value": {
+                  "input": {
+                    "text": "cough with sputum"
+                  }
+                }
+              },
+              {
+                "label": "Laboured breathing",
+                "value": {
+                  "input": {
+                    "text": "laboured breathing"
+                  }
+                }
+              },
+              {
+                "label": "Confusion",
+                "value": {
+                  "input": {
+                    "text": "confusion"
+                  }
+                }
+              },
+              {
+                "label": "Sleepiness",
+                "value": {
+                  "input": {
+                    "text": "sleepiness"
+                  }
+                }
+              },
+              {
+                "label": "Fatigue",
+                "value": {
+                  "input": {
+                    "text": "fatigue"
+                  }
+                }
+              },
+              {
+                "label": "Restlessness",
+                "value": {
+                  "input": {
+                    "text": "restlessness"
+                  }
+                }
+              },
+              {
+                "label": "Bodyache",
+                "value": {
+                  "input": {
+                    "text": "bodyache"
+                  }
+                }
+              },
+              {
+                "label": "None",
+                "value": {
+                  "input": {
+                    "text": "none"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          },
+          {
+            "time": 3000,
+            "typing": true,
+            "response_type": "pause"
+          }
+        ]
+      },
+      "parent": "node_9_1586590844842",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_8_1587319928069"
+      },
+      "conditions": "@temperature || anything_else",
+      "dialog_node": "node_8_1586591726358",
+      "previous_sibling": "node_2_1586590984448"
+    },
+    {
+      "type": "frame",
+      "output": {
+        "generic": [
+          {
+            "time": 3000,
+            "typing": true,
+            "response_type": "pause"
+          },
+          {
+            "title": "Please share your breathing rate? ",
+            "options": [
+              {
+                "label": "Normal",
+                "value": {
+                  "input": {
+                    "text": "normal"
+                  }
+                }
+              },
+              {
+                "label": "High",
+                "value": {
+                  "input": {
+                    "text": "high"
+                  }
+                }
+              },
+              {
+                "label": "Very High",
+                "value": {
+                  "input": {
+                    "text": "very high"
+                  }
+                }
+              }
+            ],
+            "description": "",
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_9_1586590844842",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_1_1587372231376"
+      },
+      "conditions": "@experience || anything_else",
+      "dialog_node": "node_8_1587319928069",
+      "previous_sibling": "node_8_1586591726358"
+    },
+    {
+      "type": "slot",
+      "parent": "node_9_1586590844842",
+      "variable": "$user_id",
+      "dialog_node": "slot_5_1587541081419"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_10_1586593055582",
+      "variable": "$heart_rate",
+      "dialog_node": "slot_9_1586600039797",
+      "previous_sibling": "handler_6_1586600038711"
+    },
+    {
+      "type": "event_handler",
+      "parent": "node_10_1586593055582",
+      "event_name": "focus",
+      "dialog_node": "handler_6_1586600038711"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_8_1586591726358",
+      "variable": "$temperature",
+      "dialog_node": "slot_8_1586593350537"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "In the last 14 days, have you traveled internationally?",
+            "Please share your response (Yes/No)"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_8_1586606317042",
+      "event_name": "focus",
+      "dialog_node": "handler_8_1586606317045",
+      "previous_sibling": "handler_3_1586606317045"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_8_1586606317042",
+      "context": {
+        "travelled": "@travelled"
+      },
+      "conditions": "@travelled",
+      "event_name": "input",
+      "dialog_node": "handler_3_1586606317045"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "Okay, Please let us know your current body temperature in degree Fahrenheit (Normal body temperature is 98.6°F):"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_8_1586593350537",
+      "event_name": "focus",
+      "dialog_node": "handler_1_1586593350549",
+      "previous_sibling": "handler_2_1586593350549"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_8_1586593350537",
+      "context": {
+        "temperature": "@temperature"
+      },
+      "conditions": "@temperature",
+      "event_name": "input",
+      "dialog_node": "handler_2_1586593350549"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thank you, You are registered as $webhook_result_3.userName"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1587485276300",
+      "conditions": "$webhook_result_3.userName",
+      "dialog_node": "response_2_1587485297765",
+      "previous_sibling": "slot_10_1587487833987"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            ""
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_3_1587485276300",
+      "conditions": "anything_else",
+      "dialog_node": "response_7_1587485300987",
+      "previous_sibling": "response_2_1587485297765"
+    },
+    {
+      "type": "slot",
+      "parent": "node_3_1587485276300",
+      "variable": "$user_id",
+      "dialog_node": "slot_10_1587487833987"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hi! Our coronavirus disease self assessment scan has been developed on the basis of guidelines from the WHO and XXX, XXX. This interaction should not be taken as expert medical advice. Any information you share with us will be kept strictly confidential. ** Powered by Altran **"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "Welcome",
+      "disabled": true,
+      "dialog_node": "response_1_1587216984853"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Sorry,  Please share your symptoms again due to technical error."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_8_1586616875405",
+      "conditions": "anything_else",
+      "dialog_node": "response_6_1586702671189",
+      "previous_sibling": "response_2_1586702670289"
+    },
+    {
+      "type": "response_condition",
+      "parent": "node_8_1586616875405",
+      "conditions": "$webhook_result_1",
+      "dialog_node": "response_2_1586702670289"
+    },
+    {
+      "type": "slot",
+      "parent": "node_4_1587046372042",
+      "variable": "$user_id",
+      "dialog_node": "slot_8_1587059990710"
+    },
+    {
+      "type": "standard",
+      "title": "Webhook",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "age": 40,
+            "family": "myself",
+            "gender": "male",
+            "user_id": "$user_id",
+            "travelled": "$travelled",
+            "experience": "$experience",
+            "heart_rate": "$heart_rate",
+            "temperature": "$temperature",
+            "breathing_rate": "$breathing_rate"
+          },
+          "result_variable": "webhook_result_1"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "dialog_node": "node_8_1586616875405",
+      "previous_sibling": "node_5_1586604971622"
+    },
+    {
+      "type": "frame",
+      "title": "Symptoms Collection",
+      "output": {
+        "generic": [
+          {
+            "time": 4000,
+            "typing": true,
+            "response_type": "pause"
+          },
+          {
+            "values": [
+              {
+                "text": "Please let us know your current body temperature in degree Fahrenheit (Normal body temperature is 98.6°F):"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1586590984448"
+      },
+      "digress_in": "does_not_return",
+      "dialog_node": "node_9_1586590844842",
+      "previous_sibling": "node_5_1587047935172"
+    },
+    {
+      "type": "frame",
+      "title": "Travel History - Location",
+      "output": {
+        "generic": [
+          {
+            "time": 3000,
+            "typing": true,
+            "response_type": "pause"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_5_1586604971622"
+      },
+      "conditions": "@heartRate || anything_else",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_10_1586593055582",
+      "previous_sibling": "node_9_1586590844842"
+    },
+    {
+      "type": "frame",
+      "title": "Thank you",
+      "metadata": {
+        "callout": {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "": ""
+          },
+          "result_variable": "webhook_result_1"
+        },
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_8_1586616875405"
+      },
+      "conditions": "@sys-location",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_5_1586604971622",
+      "previous_sibling": "node_10_1586593055582"
+    },
+    {
+      "type": "frame",
+      "title": "Family",
+      "output": {
+        "generic": [
+          {
+            "time": 3000,
+            "typing": true,
+            "response_type": "pause"
+          }
+        ]
+      },
+      "metadata": {
+        "callout": {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "user_id": "$user_id",
+            "isverified": true
+          },
+          "result_variable": "webhook_result_2"
+        },
+        "_customization": {
+          "mcr": false
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_9_1586590844842"
+      },
+      "conditions": "",
+      "dialog_node": "node_5_1587047935172",
+      "previous_sibling": "node_3_1587485276300"
+    },
+    {
+      "type": "standard",
+      "title": "User ID",
+      "output": {
+        "generic": [
+          {
+            "time": 5000,
+            "typing": true,
+            "response_type": "pause"
+          },
+          {
+            "values": [
+              {
+                "text": "Please confirm your Mobile Number"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_3_1587485276300"
+      },
+      "conditions": "@sys-number",
+      "dialog_node": "node_4_1587046372042",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "frame",
+      "title": "Confirmation",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "user_id": "$user_id",
+            "isverified": true
+          },
+          "result_variable": "webhook_result_3"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_5_1587047935172"
+      },
+      "conditions": "@sys-number || anything_else",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_3_1587485276300",
+      "previous_sibling": "node_4_1587046372042"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hi! Let's start capturing your symptoms for further analysis."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {
+        "_customization": {
+          "mcr": false
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_4_1587046372042"
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "My first skill",
+  "language": "en",
+  "description": ""
+}

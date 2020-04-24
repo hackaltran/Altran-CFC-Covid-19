@@ -1,0 +1,34 @@
+breathing_rate,Normal,Normal
+breathing_rate,High
+breathing_rate,Very High
+experience,fatigue,restlessness,dehydration,pain,moodiness,weakness,depression,drowsiness,constipation
+experience,Diarrhea,diarrhea,diarrhoea,vomiting,constipation,gastroenteritis,nausea,indigestion,bloating,flatulence,diarrheal,dysentery,cramping,giardiasis,gastritis,heartburn,dizziness,vomitting,dysentry,stomachache,hyperacidity
+experience,Running nose,nose,tongue,sinuses
+experience,None,none of these,no,dont want to share,none of the above,nothing,neither,none
+experience,sore throat,sore,throat pain,not able to breath,breathing problem,breathing problems
+experience,dry cough,cough,problem,problems,coughing,trouble,difficulty,concern,problematic,New or worsening cough,worsening cough
+experience,laboured breathing
+experience,confusion,ambiguity,bewilderment,chaos,frustration,confusions,disorientation,uneasiness,unease,misunderstandings,consternation,disappointment,perplexity,uncertainty
+experience,cough with sputum,cough,coughs,wheeze,sniffle,runny,asthma,sneeze,fevers
+experience,Headache,headache,migraines,pain,drowsiness
+experience,Restlessness
+experience,sleepiness,hypoglycaemia,impulsivity,apnea,nausea,hallucinations,hypotension,sleep,listlessness
+experience,bodyache,Bodyache,stomachache,headachy,achiness,myalgias,chilliness,achey,arthralgias,kuomintang,nauseas,ache,crampy,queasiness,myalgia
+family,Myself
+family,spouse,wife
+family,Child,kid
+family,Someone,Others
+gender,others
+gender,male,Male,Men,Man,m,ma,mal
+gender,female,Women,Woman,Female,f,fe,fem,fema,femal
+heartRate,High,high,86,87,88,89,90
+heartRate,Medium,80,medium,81,82,83,84,85
+heartRate,Low,low,60,61,62,63,64,65,66,67,68,69
+heartRate,Normal,normal,70,71,72,73,74,75,76,77,78,79
+heartRate,Very High,very high,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114
+temperature,Normal,Normal,correct,no fever,98,98.1,98.2,98.3,98.4,98.5,98.6,96,96.1,96.2,96.3,96.4,96.5,96.6,96.7,96.8,96.9,96.10,97,97.0,97.1,97.2, 97.3, 97.4, 97.5, 97.6, 97.7, 97.8, 97.9, 97.10,98.0,96.0,fine,good
+temperature,Medium,medium,98.7,98.8,98.9,98.10,99.1,99.2,99.3,99.4,99.5,mediumsized,moderate
+temperature,High fever,feeling low,Yes,little bit,a little,yeah,99.6,99.7,99.8,99.9,99.10,100,100.1,100.2,100.3,100.4,100.5,100.6,100.7,100.8,100.9,100.10,101,101.1,101.2,101.3,101.4,101.5,101.6,101.7,101.8,101.9,101.10,102,102.0,high
+temperature,Very High Fever,104.8,104.9,104.10,105,105.0,very high,too much,high,feeling sick,102.1,102.2,102.3,102.4,102.5,102.6,102.7,102.8,102.9,102.10,103.0,103,103.1,103.2,103.3,103.4,103.5,103.6,103.7,103.8,103.9,103.10,104,104.0,104.1,104.2,104.3,104.4,104.5,104.6,104.7
+travelled,Yes,yeah,have travelled,have travelled internationally,was travelled,was travelling
+travelled,No,not travelled internationally,not travelled,have not travelled,was not travelled,was not travelling
