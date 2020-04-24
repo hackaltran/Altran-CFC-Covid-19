@@ -29,11 +29,11 @@ TBD
 
 ### What's the problem?
 
-In these unprecedented times, health care systems are getting overwhelmed with patients having Covid-19 symptoms all over the world. It is becoming very difficult for doctors to handle every patient with these symptoms. 
+TBD
 
 ### How can technology help?
 
-We are trying to bring technology to the rescue of health care systems all over the world so that they are able to cope up with the massive inflow of patients with Covid-19 symptoms. 
+TBD
 
 ### The idea
 
@@ -61,28 +61,42 @@ TBD
 
 ## Getting started
 
-To get started take clone of following repository to your local machine.
+To get started, take clone of the following repository to your local machine.
+
+```
+   git clone git@github.com:hackaltran/Altran-CFC-Covid-19.git
+```
+After clone verify the following folders :
 
 - CFC_API
 - CFC_UI
 - CFC_Monitoring
 - CFC_MonitoringUI
 
-```
-   git clone git@github.com:hackaltran/Altran-CFC-Covid-19.git
-```
-
 ### Prerequisites
 
-Before installing the application, you ensure following tools should be installed in your machine.
-```bash
-node v10 or above
-docker v19 or above
-IBM cli
-IBM cloud account
+Before installing the application, you ensure following tools should be installed in your machine. The URL's to download and install these tools have also been mentioned.  
+
+- Node.js v10 or above
+```
+https://nodejs.org/en/
+```
+- docker v19 or above
+```
+TBD
+```
+- IBM cli
+```
+TBD
+```
+- IBM cloud account
+```
+TBD
 ```
 
+
 ### Installing
+#### Step 1
 ###### creating Docker image 
 
  The following command will be use to deploy the application on IBM Cloud kubernetes cluster
@@ -119,6 +133,7 @@ docker push us.icr.io/cfc_altran/cfc-nodejs-repo
 ibmcloud cr image-list
 
 ```
+#### Step 2
 ###### Kubernets installation
 
 - Below commands need to be executed manually on IBM Cloud via browser based 'Kubernetes Terminal'
@@ -186,8 +201,10 @@ TBD
 
 ## Authors
 
-Deepak Bammi
-Manoj Gupta
+- Deepak Goyal
+- Hitesh Choudhary
+- Manoj Gupta
+- Chandresh Tiwari
 
 ## License
 
