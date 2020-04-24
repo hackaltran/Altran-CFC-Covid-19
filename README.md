@@ -75,9 +75,9 @@ After clone verify the following folders :
 - CFC_Monitoring : Monitor chatbot API
 - CFC_MonitoringUI : Monitor chatbot UI
 
-Use the README.md files to build and compile plugins as mentioned below -
+Use the README.md files to build and compile solutions as mentioned below -
 
-| Plugin                     | README |
+| Solution                   | README |
 | ------                     | ------ |
 | Patient Backend Service    | [README.md](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/CFC_API/README.md) |
 | Patient App                | [README.md](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/CFC_UI/README.md) |
@@ -87,12 +87,13 @@ Use the README.md files to build and compile plugins as mentioned below -
 #### Approach 2 : Use the existing deployed infrastructure 
 
 Use the following URL's to access the existing infrastructure -
-###### Monitor Dashboard
-```
-https://c4c-monitor.df.r.appspot.com/login
-```
-###### Patient App
-TBD
+
+| Infrastructure             | URL |
+| ------                     | ------ |
+| Patient Backend Service    | http://184.172.241.147:32544/ |
+| Patient App                | TBD |
+| Monitoring Backend Service | https://c4c-monitorapi.df.r.appspot.com/doctors |
+| Moniroting Dashboard       | https://c4c-monitor.df.r.appspot.com/login |
 
 ## Live demo
 
