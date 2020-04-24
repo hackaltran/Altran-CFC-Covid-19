@@ -60,7 +60,19 @@ TBD
 
 ## Getting started
 
-To get started, take clone of the following repository to your local machine.
+To get started, there are approaches that you can use health assitant solution - 
+
+- Build and Compile the End to End solution
+- Use the existing deployed insfrasture 
+
+## Build and Compile the Solution
+
+| Plugin                     | README |
+| ------                     | ------ |
+| Patient App                | [README.md](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/README.md) |
+| Patient Backend Service    | [README.md](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/README.md) |
+| Moniroting Dashboard       | [README.md](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/README.md) |
+| Monitoring Backend Service | [README.md](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/README.md) |
 
 ```
    git clone git@github.com:hackaltran/Altran-CFC-Covid-19.git
@@ -217,6 +229,7 @@ TBD
 - Hitesh Choudhary
 - Manoj Gupta
 - Chandresh Tiwari
+- Yogesh Sharma
 
 ## License
 
