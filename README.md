@@ -14,7 +14,6 @@ Health Assistant - Details about submission name - TBD
 1. [Project roadmap](#project-roadmap)
 1. [UX Design](#ux-design)
 1. [Getting started](#getting-started)
-1. [Running the tests](#running-the-tests)
 1. [Live demo](#live-demo)
 1. [Built with](#built-with)
 1. [Contributing](#contributing)
@@ -81,26 +80,22 @@ Before installing the application, you ensure following tools should be installe
 ```
 https://nodejs.org/en/
 ```
-- docker v19 or above
+- Docker v19 or above
 ```
 https://www.docker.com/products/docker-desktop
 ```
-- IBM cli
+- IBM Cloud command line interface
 ```
 https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli
-```
-- IBM cloud account
-```
-https://cloud.ibm.com/
 ```
 
 
 ### Installation
 
-#### installing CFC_API : Patient API
+#### Installing CFC_API : Patient API
 Below Steps will be used to create your own image repository, build the Docker image and finally deploy on the IBM Cloud Kubernetes cluster
 
-###### step 1- Creating image repository on IBM Cloud 
+##### step 1- Creating image repository on IBM Cloud 
 
 Before building the Docker image, first you need to add a namespace to create your own image repository on IBM Cloud.
 
@@ -118,7 +113,7 @@ ibmcloud cr namespace-add cfc_altran
 ```
 ibmcloud cr namespace-list
 ```
-###### Step 2- Creating Docker image
+##### Step 2- Creating Docker image
 
 You have to run these command alongside Dockerfile.
 
@@ -146,7 +141,7 @@ docker push us.icr.io/cfc_altran/cfc-nodejs-repo
 ```
 ibmcloud cr image-list
 ```
-###### Step 3- Kubernetes installation
+##### Step 3- Kubernetes installation
 
 __NOTE__: Below commands need to be executed manually on IBM Cloud via browser based 'Kubernetes Terminal'
 
@@ -177,8 +172,28 @@ ibmcloud ks workers cfc_nodejs_cluster
 ```
 - Below is example GET API call
 ```
-curl -kX GET http://<ip>:<port>/api/patient/<patientIP>
+curl -kX GET https://<ip>:<port>/api/patient/<patientIP>
 ```
+__NOTE__: The public url must be secure having HTTPS protocol.
+
+#### Installing CFC_UI : Patient UI
+
+```
+android installation
+```
+#### Installing CFC_Monitoring : Monitor chatbot API
+
+```
+TBD
+```
+
+
+#### Installing CFC_MonitoringUI : Monitor chatbot UI
+
+```
+TBD
+```
+
 
 ## Live demo
 
