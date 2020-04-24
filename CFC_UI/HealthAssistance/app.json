@@ -1,0 +1,37 @@
+{
+  "expo": {
+    "name": "HealthAssistance",
+    "slug": "HealthAssistance",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/AppIcon.png",
+    "splash": {
+      "image": "./assets/images/SplashScreenNew.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "splash": {
+        "image": "./assets/images/SplashScreenNew.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.altran.healthAssistance",
+      "versionCode": 1
+    }
+  }
+}

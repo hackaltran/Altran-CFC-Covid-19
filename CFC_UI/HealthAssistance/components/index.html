@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<head>
+		<style>
+		  .chatElement {
+			height: 800px;
+			width: 100%;
+		  }
+		</style>
+		</head>
+    <body id='gfg'> 
+      <div class="chatElement"></div>
+      <script src="https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js"></script>
+      <script>
+        const element = document.querySelector('.chatElement');
+        const options = {
+          // A UUID like '1d7e34d5-3952-4b86-90eb-7c7232b9b540' included in the embed code provided in Watson Assistant.
+          integrationID: "6db2a02a-fad8-495b-9828-37a77ea3eaa6",
+          // Your assistants region e.g. 'us-south', 'us-east', 'jp-tok' 'au-syd', 'eu-gb', 'eu-de', etc
+          region: 'eu-gb',
+        // Provide the custom element.
+        // element: element,
+        // Hide the close button since we want it always open.
+        hideCloseButton: true,
+        // Hide the default launcher.
+        showLauncher: false,
+        // Make the window open by default.
+        openChatByDefault: true
+
+        };
+        window.loadWatsonAssistantChat(options).then(function(instance) {
+          instance.render();
+          document.getElementById("gfg").removeAttribute("style");
+        });
+      </script>
+    </body>
+</html>
+
+
+
+

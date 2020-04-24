@@ -1,0 +1,30 @@
+{
+  "name": "cfc_monitoring",
+  "version": "1.0.0",
+  "description": "Monitor the patients data",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "start:scheduler": "node ./scheduler/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hackaltran/CFC_Monitoring.git"
+  },
+  "author": "Hitesh Choudhary",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hackaltran/CFC_Monitoring/issues"
+  },
+  "homepage": "https://github.com/hackaltran/CFC_Monitoring#readme",
+  "dependencies": {
+    "@cloudant/cloudant": "^4.2.4",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "cron": "^1.8.2",
+    "express": "^4.16.3",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {}
+}

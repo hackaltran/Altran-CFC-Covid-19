@@ -1,0 +1,127 @@
+.login-container {
+    background-color: #F4F4F4;
+    min-height: 610px;
+
+    .forgot_pwd {
+        text-align: center;
+        margin-top: 70px;
+        color: #007D79;
+        font-size: 13px;
+    }
+
+    .form-container {
+        height: auto;
+        width: 35%;
+        top: 70px;
+        left: 32.5%;
+        background-color: #fff;
+
+        .btn-div {
+            text-align: center;
+        }
+
+        .header-div {
+            margin-top: 10px;
+
+            .header {
+                color: #161616;
+                margin-top: 8px;
+                font-weight: 600;
+            }
+            .sub-header {
+                color: #393939;
+                line-height: 25px;
+            }
+        }
+    } 
+
+    .form-style {
+        margin-top: 30px;
+
+        .text-divider {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            margin: -16px 0;
+            background-color: rgba(0, 0, 0, 0.16);
+            height: 0.5px;
+        }
+
+        .text-divider-color {
+            background-color: #000000;
+        }
+
+        .rememberme {
+            display: inline-flex;
+
+            svg {
+                margin: 10px 5px;
+                fill: #393939;
+            }
+        }
+
+        .button-div {
+            position: absolute;
+            left: 0;
+            width: 100%;
+
+            .bx--btn {
+                width: 50%;
+                font-size: 12px;
+                height: 0;
+            }
+            .secondary-div {
+                background-color: #fff;
+                color: #007D79;
+
+                span {
+                    position: absolute;
+                }
+            }
+            .primary-div {
+                background-color: #007D79;
+            }
+            .login-arrow {
+                fill: #fff;
+                margin-right: -40px;
+            }
+        }
+
+        label {
+            color: #393939;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+    
+        .text-field-style {
+            background-color: #fff;
+            border: none;
+            padding: 0;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+
+        .text-field-style:focus {
+            outline: none;
+        }
+
+        .pwd-style {
+            position: relative;
+            display: flex;
+
+            .pwd-view {
+                position: absolute;
+                right: 0;
+                margin: 29px 10px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.loader-login {
+    circle {
+        stroke: #007D79;
+    }
+}
+
