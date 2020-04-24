@@ -89,12 +89,10 @@ Use the README.md files to build and compile plugins as mentioned below -
 Use the following URL's to access the existing infrastructure -
 ###### Monitor Dashboard
 ```
-https://c4c-monitorapi.df.r.appspot.com/doctors
-```
-###### Patient App
-```
 https://c4c-monitor.df.r.appspot.com/login
 ```
+###### Patient App
+TBD
 
 ## Live demo
 
