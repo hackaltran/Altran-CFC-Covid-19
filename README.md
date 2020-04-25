@@ -109,17 +109,17 @@ Use the following URL's to access the existing infrastructure -
 #### Default Credentials
 To use solution and existing deployed infrastructure, you can register yourself as a new patient or you can use the following default credentials saved in our cloudant database -
 
-###### Patient(to be used for accessing Patient Mobile App)
+###### Patient (to be used for accessing Patient Mobile App)
 ```
 Mobile Number : 7498234788
 Password : patient
 ```
-###### Doctor(to be used for accessing Monitoring Dashboard)
+###### Doctor (to be used for accessing Monitoring Dashboard)
 ```
 Username : 480900901
 Password : medicine
 ```
-###### Operator(to be used for accessing Monitoring Dashboard)
+###### Medical Assistant (to be used for accessing Monitoring Dashboard)
 ```
 Username : 480900801
 Password : hospital
