@@ -62,6 +62,9 @@ TBD
 | User Persona               | [Users.pdf](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/Users.pdf) |
 | User Flow                  | [UserFlows.pdf](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/UserFlows.pdf) |
 | Visual Design              | [VisualScreenFlows.pdf](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/VisualScreenFlows.pdf) |
+| Prototype                  | [Mobile App Screen](https://xd.adobe.com/view/badd3b96-443f-442c-4b17-1f791ae99b8e-ccec/)
+|                            |[Medical Assistant Screen](https://xd.adobe.com/view/ea338b94-c972-494b-75f7-29a5e62a8cb2-9c02/ )
+|                            |[Doctor's Screen](https://xd.adobe.com/view/23568715-1447-49cf-7068-e440efe897ad-5567/)|
 
 
 ## Getting started
