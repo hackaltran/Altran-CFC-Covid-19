@@ -56,14 +56,14 @@ TBD
 
 ## UX Design
 
-| UX Steps.                  | URL |
+| Details                    | URL |
 | ------                     | ------ |
-| Intro                      | [Intro.pdf](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/Intro.pdf) |
-| User Persona               | [Users.pdf](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/Users.pdf) |
-| Hills                      | [Hills.pdf](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/Hills.pdf) |
-| User Flow                  | [UserFlows.pdf](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/UserFlows.pdf) |
-| Visual Design              | [VisualScreenFlows.pdf](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/VisualScreenFlows.pdf) |
-| Prototype                  | [Mobile App Screen](https://xd.adobe.com/view/badd3b96-443f-442c-4b17-1f791ae99b8e-ccec/)
+| <strong>Introduction</strong> - Designing a seamless experience for the patient and medical practitioners using persona, user journey.                | [Intro.pdf](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/Intro.pdf) |
+| <strong>User Persona</strong> - We created a user person to identify the users. There are four types of users.                | [Users.pdf](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/Users.pdf) |
+| <strong>Hills</strong> - Hills are statements of intent written as meaningful user outcomes. They tell you where to go, not how to get there, empowering teams to explore breakthrough ideas without losing sight of the goal.                      | [Hills.pdf](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/Hills.pdf) |
+| <strong>User Flow</strong> - We created user flows to identify the journey of the user.                   | [UserFlows.pdf](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/UserFlows.pdf) |
+| <strong>Visual Design</strong> - This is a visual design flow of all four users. We are showing all user's journey here.             | [VisualScreenFlows.pdf](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/VisualScreenFlows.pdf) |
+| <strong>Prototype</strong> - This is a clickable prototype for Mobile App/ Website which gives an idea of how a user will interact with the App/website.                  | [Mobile App Screen](https://xd.adobe.com/view/badd3b96-443f-442c-4b17-1f791ae99b8e-ccec/)
 |                            |[Medical Assistant Screen](https://xd.adobe.com/view/ea338b94-c972-494b-75f7-29a5e62a8cb2-9c02/ )
 |                            |[Doctor's Screen](https://xd.adobe.com/view/23568715-1447-49cf-7068-e440efe897ad-5567/)|
 
