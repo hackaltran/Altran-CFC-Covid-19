@@ -75,7 +75,7 @@ To get started with Health Assistant solution, you can choose any of the followi
 Take git clone at a location of your choice on your system.
 
 ```
-   git clone git@github.com:hackaltran/Altran-CFC-Covid-19.git
+   git clone https://github.com/hackaltran/Altran-CFC-Covid-19.git
 ```
 After clone verify the following folders :
 
