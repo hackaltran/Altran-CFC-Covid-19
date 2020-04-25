@@ -81,10 +81,10 @@ Take git clone at a location of your choice on your system.
 ```
 After clone verify the following folders :
 
-- CFC_API : Patient API
-- CFC_UI : Patient UI
-- CFC_Monitoring : Monitor chatbot API
-- CFC_MonitoringUI : Monitor chatbot UI
+- CFC_API : Patient Backend Service
+- CFC_UI : Patient App
+- CFC_Monitoring : Monitoring Backend Service
+- CFC_MonitoringUI : Moniroting Dashboard
 
 Use the README.md files to build and compile solutions as mentioned below -
 
