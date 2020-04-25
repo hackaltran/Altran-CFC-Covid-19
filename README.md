@@ -106,13 +106,38 @@ Use the following URL's to access the existing infrastructure -
 | Monitoring Backend Service | [Monitoring Restful APIs](https://c4c-monitorapi.df.r.appspot.com/doctors) |
 | Moniroting Dashboard       | [Monitoring Dashboard](https://c4c-monitor.df.r.appspot.com/login) |
 
+#### Default Credentials
+To use solution and existing deployed infrastructure, you can register yourself as a new patient or you can use the following default credentials saved in our cloudant database -
+
+##### Patient(to be used for accessing Patient Mobile App)
+```
+Mobile Number : 7498234788
+Password : patient
+```
+##### Doctor(to be used for accessing Monitoring Dashboard)
+```
+Username : 480900901
+Password : medicine
+```
+##### Operator(to be used for accessing Monitoring Dashboard)
+```
+Username : 480900801
+Password : hospital
+```
+
 ## Live demo
 
 TBD
 
 ## Built with
 
-TBD
+* [Express](https://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js
+* [React](https://reactjs.org/) - A JavaScript library for building user interfaces
+* [React Native](https://reactnative.dev/) - A framework for building native apps using React
+* [IBM Cloudant](https://www.ibm.com/in-en/cloud/cloudant) - Cloudant is a non-relational, distributed database cloud-based service based on the Apache-backed CouchDB project and the open source BigCouch project.
+* [IBM Watson](https://www.ibm.com/in-en/watson) - Watson is a question-answering computer system capable of answering questions posed in natural language, developed in IBM's DeepQA project.
+* [docker](https://www.docker.com/) - Docker is a set of platform as a service products that uses OS-level virtualization to deliver software in packages called containers.
+* [kubernetes](https://kubernetes.io/) - Kubernetes (K8s) is an open-source system for automating deployment, scaling, and management of containerized applications.
 
 ## Contributing
 
