@@ -54,14 +54,14 @@ TBD
 
 TBD
 
-## Ux Design
+## UX Design
 
 | UX Steps.                  | URL |
 | ------                     | ------ |
-| Intro                      | https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/Intro.pdf |
-| User Persona               | https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/Users.pdf |
-| User Flow                  | https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/UserFlows.pdf |
-| Visual Design              | https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/VisualScreenFlows.pdf |
+| Intro                      | [Intro.pdf](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/Intro.pdf) |
+| User Persona               | [Users.pdf](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/Users.pdf) |
+| User Flow                  | [UserFlows.pdf](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/UserFlows.pdf) |
+| Visual Design              | [VisualScreenFlows.pdf](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/UX_Design/VisualScreenFlows.pdf) |
 
 
 ## Getting started
