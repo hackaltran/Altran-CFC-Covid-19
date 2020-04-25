@@ -101,7 +101,7 @@ Use the following URL's to access the existing infrastructure -
 
 | Infrastructure             | Deployment |
 | ------                     | ------ |
-| Patient Backend Service    | [Patient Restful APIs](http://184.172.241.147:30222/) |
+| Patient Backend Service    | [Patient Restful APIs](http://184.172.241.147:30222/api/user/953441888) |
 | Patient App                | [Mobile App - Patient](https://github.com/hackaltran/Altran-CFC-Covid-19/tree/master/CFC_UI/apk) |
 | Monitoring Backend Service | [Monitoring Restful APIs](https://c4c-monitorapi.df.r.appspot.com/doctors) |
 | Moniroting Dashboard       | [Monitoring Dashboard](https://c4c-monitor.df.r.appspot.com/login) |
