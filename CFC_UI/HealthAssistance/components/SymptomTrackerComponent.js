@@ -14,27 +14,37 @@ class SymptomTracker extends Component {
     render() {
 
         const { navigate } = this.props.navigation;
-        
+
         if (Platform.OS === 'ios') {
-            return(
+            return (
                 <View style={{ flex: 1 }}>
-                    <WebView 
-                    style={{flex: 1}}
-                    source={require("./index.html")}
+                    <WebView
+                        style={{ flex: 1 }}
+                        source={require("./index.html")}
                     />
-                    <Button title='Complete Tracking' onPress={ () => { 
-                        this.props.user.user && this.props.user.user.symptomDataLen && this.props.user.user.symptomDataLen >= 1 ? navigate('Home') :  navigate('DashboardPossible')} }/>
-                </View>  
+                    <View style={{zIndex: 4, elevation: 3, right:0, top:0, position: "absolute"}}>
+                        <Button title='Submit' buttonStyle={{ width: 105, height: 48, borderRadius: 0}}
+                            onPress={() => {
+                                this.props.user.user && this.props.user.user.symptomDataLen && this.props.user.user.symptomDataLen >= 1 ? navigate('Home') : navigate('DashboardPossible')
+                            }}
+                        />
+                    </View>
+                </View>
             )
         } else {
-            return(
-                    <View style={{ flex: 1 }}>
-                        <WebView 
+            return (
+                <View style={{ flex: 1 }}>
+                    <WebView
                         source={{ uri: 'https://chatbot-project-274815.df.r.appspot.com/index.html' }}
+                    />
+                    <View style={{zIndex: 4, elevation: 3, right:0, top:0, position: "absolute"}}>
+                        <Button title='Submit' buttonStyle={{ width: 105, height: 48, borderRadius: 0}}
+                            onPress={() => {
+                                this.props.user.user && this.props.user.user.symptomDataLen && this.props.user.user.symptomDataLen >= 1 ? navigate('Home') : navigate('DashboardPossible')
+                            }}
                         />
-                        <Button title='Complete Tracking' onPress={ () => { 
-                            this.props.user.user && this.props.user.user.symptomDataLen && this.props.user.user.symptomDataLen >= 1 ? navigate('Home') :  navigate('DashboardPossible')} }/>
                     </View>
+                </View>
             )
         }
     }

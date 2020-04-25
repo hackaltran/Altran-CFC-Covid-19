@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/login" component={Login} />
+          <Route exact path={["/", "/login"]} component={Login} />
           <PrivateRoute path='/dashboard' component={Monitoring} />
           <PrivateRoute
             exact

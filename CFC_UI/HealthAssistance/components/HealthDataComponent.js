@@ -23,80 +23,71 @@ class HealthData extends Component {
         let value;
         switch (string.toLowerCase(string)) {
             case 'normal':
+            case 'fine':
+            case 'correct':
+            case 'no fever':
+            case 'normal':
                 value = 97.3;
                 break;
             case 'medium':
+            case 'mediumsized':
                 value = 99.1;
                 break;
             case 'high':
-                value = 100.8;
-                break;
             case 'high fever':
+            case 'feeling low':
+            case 'little bit':
+            case 'a little':
+            case 'yeah':
                 value = 100.8;
                 break;
             case 'very high':
-                value = 102;
-                break;
             case 'very high fever':
-                value = 102;
+            case 'too much':
+            case 'feeling sick':
+                value = 103.55;
                 break;
             default:
                 value = parseFloat(string);
         }
-        return value
+        return value;
     }
 
     getHeartRate = (string) => {
         let value;
         switch (string.toLowerCase(string)) {
             case 'low':
-                value = 70;
+                value = 64.5;
                 break;
             case 'normal':
-                value = 90;
+                value = 74.5;
                 break;
             case 'medium':
-                value = 110;
+                value = 82.5;
                 break;
             case 'high':
-                value = 130;
+                value = 74.5;
                 break;
             case 'very high':
-                value = 150;
+                value = 106;
                 break;
             default:
                 value = parseFloat(string);
         }
-        return value
+        return value;
     }
 
     render() {
-
-        // this.props.user.user = {
-        //     "name": "NewUser", "gender": "Male", "age": 45, "mobileno": "34335343323", "location": { "lat": "71.56374", "lang": "81.938393873" }, "currentAssign": "doctor", "morbidity": "none", "isTestPerformed": true,
-        //     "symptom": [
-        //         // { "age": 30, "family": "Myself", "gender": "male", "travelled": "No", "experience": "Headache", "heart_rate": "Medium", "temperature": "Normal", "breathing_rate": "High", "timestamp": 1587471581293 },
-        //         // { "age": 30, "family": "Myself", "gender": "male", "travelled": "No", "experience": "sore throat", "heart_rate": "High", "temperature": "very high", "breathing_rate": "High", "timestamp": 1587472714459 },
-        //         // { "age": 30, "family": "Myself", "gender": "male", "travelled": "No", "experience": "sore throat", "heart_rate": "Normal", "temperature": "medium", "breathing_rate": "Normal", "timestamp": 1587473719459 }
-        //         {"age":40,"family":"myself","gender":"male","travelled":"Yes","experience":"dry cough","heart_rate":"Very High","temperature":"Very High Fever","breathing_rate":"High","timestamp":1587550679271},
-        //         {"age":40,"family":"myself","gender":"male","travelled":"Yes","experience":"dry cough","heart_rate":"Very High","temperature":"Very High Fever","breathing_rate":"Very High","timestamp":1587550958852}
-        //     ], "iscovid": false, "healthstatus": "none", "doctorscreening": [{ "comment": "done", "timestamp": 1587382527370, "doctor": "doctor_1" }, { "comment": "Again test", "timestamp": 1587382541947, "doctor": "doctor_1" }, { "comment": "Updated by doctor", "timestamp": 1587384783672, "doctor": "doctor_1" }, { "comment": "Last comment for testing", "timestamp": 1587387937155, "doctor": "288385614" }, { "comment": "tum covid ho - lag rahe ho", "timestamp": 1587406746040, "doctor": "288385614" }, { "comment": "mast lag rahe ho", "timestamp": 1587406860234, "doctor": "288385614" }], "timestamp": 1587309961479, "doctorId": "480900901", "assignedByOperator": { "id": "480900801", "timestamp": 1587445023578, "name": "operator_1" }, "assignedByDoctor": {}, "usertype": "individual", "qurantine":
-        //         { "isQurantine": true, "started": 1587022714459, "end": 1588750584000 }, "currentCovidScore": 10.75, "userId": "288385614"
-        // };
-        // console.log(this.props.user.user);
 
         const graphData = this.props.user.user.symptom;
         const isQurantine = this.props.user.user.qurantine.isQurantine;
         const startedQurantine = this.props.user.user.qurantine.started;
         const endQurantine = this.props.user.user.qurantine.end;
 
-
         //----- CALCULATE LINE CHART DATA -----//
         let bodyTempGraphData = [];
         let heartRateGraphData = [];
 
-        // let bodyTempData = [95, 100, 105, 108];
-        // let heartRateData = [60, 90, 120, 140, 160];
         let bodyTempData = [];
         let heartRateData = [];
 
@@ -109,15 +100,16 @@ class HealthData extends Component {
 
                 let temp = this.getTemperature(item.temperature);
                 if (temp < 95) temp = 95;
-                if (temp > 108) temp = 108;
+                if (temp > 105) temp = 105;
 
                 let heartRate = this.getHeartRate(item.heart_rate);
                 if (heartRate < 60) heartRate = 60;
-                if (heartRate > 160) heartRate = 160;
-                
+                if (heartRate > 114) heartRate = 114;
+
                 bodyTempData.push(temp);
-                heartRateData.push(heartRate);
                 bodyTempGraphData.push(temp);
+
+                heartRateData.push(heartRate);
                 heartRateGraphData.push(heartRate);
             })
         } else {
@@ -125,13 +117,6 @@ class HealthData extends Component {
             bodyTempData = [95, 100, 105, 108];
             heartRateData = [60, 90, 120, 140, 160];
         }
-
-        // console.log("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-        // console.log(bodyTempData);
-        // console.log(bodyTempGraphData);
-
-        // console.log(heartRateData);
-        // console.log(heartRateGraphData);
 
         //----- CALCULATE DONUT DATA -----//
         let progress = 0;

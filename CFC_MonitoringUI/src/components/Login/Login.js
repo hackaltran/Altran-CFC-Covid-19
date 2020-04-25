@@ -29,10 +29,19 @@ class Login extends Component {
     this.signinBtn = this.signinBtn.bind(this);
   }
 
+  /**
+   * @method handleChange
+   * @description Set variable when text field value changes
+   */
   handleChange(event) {
     this.setState({ [event.target.id]: event.target.value });
   }
 
+  /**
+   * @method handleFocusBlur
+   * @param type 
+   * @description Handle focus and blur on text field
+   */
   handleFocusBlur(type, event) {
     if(type === 'focus') {
       this.setState({ focusTextField: event.target.id });
@@ -42,6 +51,10 @@ class Login extends Component {
     
   }
 
+  /**
+   * @method signinBtn
+   * @description Functionality when clickd on sign in button
+   */
   signinBtn = (event) => {
     event.preventDefault();
     this.setState({dataLoader: true});
@@ -65,6 +78,10 @@ class Login extends Component {
     })
   }
 
+  /**
+   * @method pwdView
+   * @description Password view function
+   */
   pwdView() {
     this.setState({
       pwdType: this.state.pwdType === 'password' ? 'text' : 'password'

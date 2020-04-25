@@ -114,18 +114,17 @@ class DosDonsComponent extends Component {
 
     render() {
         return (
-            <View style={{ height: 220 }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <View style={{ height: 'auto' }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center'}}>
                     <Carousel
                         ref={(c) => { this._carousel = c; }}
                         data={this.state.carouselItems}
                         renderItem={this.renderItems}
-                        sliderWidth={310}
-                        itemWidth={310}
+                        sliderWidth={320}
+                        itemWidth={320}
                         layout={"default"}
-                        slideStyle={{ marginRight: 15 }}
-                        inactiveSlideScale={1}
-                        inactiveSlideOpacity={1}
+                        inactiveSlideScale={0.9}
+                        inactiveSlideOpacity={0.7}
                         loop={false}
                     >
                     </Carousel>

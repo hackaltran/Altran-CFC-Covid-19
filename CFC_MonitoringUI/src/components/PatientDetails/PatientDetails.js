@@ -104,6 +104,7 @@ class PatientDetails extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
+
   componentDidMount() {
     this.getCommentList();
     this.getDoctors();
@@ -121,6 +122,10 @@ class PatientDetails extends React.Component {
     });
   }
 
+  /**
+   * @method getDoctors
+   * @description API implementation to get the doctors list
+   */
   getDoctors() {
     const endpoint = `doctors`;
     return getapi(endpoint).then(responseJson => {
@@ -130,6 +135,10 @@ class PatientDetails extends React.Component {
     });
   }
 
+  /**
+   * @method getCommentList
+   * @description Get comments list of particular patient
+   */
   getCommentList() {
     const endpoint = `patients/comment/${this.props.id}`;
     return getapi(endpoint).then(responseJson => {
@@ -139,6 +148,10 @@ class PatientDetails extends React.Component {
     });
   }
 
+  /**
+   * @method commentClk
+   * @description Functionality when doctor comments
+   */
   commentClk() {
     const endpoint = `patients/comment/${this.props.id}`;
     const reqObj = {
@@ -154,14 +167,29 @@ class PatientDetails extends React.Component {
     });
   }
 
+  /**
+   * @method handleChange
+   * @description Set values when text value changes
+   */
   handleChange(event) {
     this.setState({ [event.target.id]: event.target.value });
   }
 
+  /**
+   * @method generateTimeFormat
+   * @param timestamp 
+   * @description Function to generate time format from milliseconds
+   */
   generateTimeFormat(timestamp) {
     return moment(Number(timestamp)).format("h:mm a, DD MMM YYYY");
   }
 
+  /**
+   * @method assign
+   * @param val 
+   * @param event 
+   * @description Function to assign doctor to particular patient
+   */
   assign(val, event) {
     const endpoint = `patients/assign-doctor/${this.props.id}`;
     const reqObj = {
@@ -182,17 +210,34 @@ class PatientDetails extends React.Component {
       }
     });
   }
+
+  /**
+   * @method selection
+   * @description Open modal on specific value when selected doctor
+   */
   selection(event) {
     if (event.selectedItem.text === "Doctor") {
       this.setState({ modal: true, assigned: false });
     }
   }
+
   close() {
     this.setState({ modal: false });
   }
+
+  /**
+   * @method notificationClose
+   * @description Handle to close notification alert
+   */
   notificationClose() {
     this.setState({ isNotificationOpen: false });
   }
+
+  /**
+   * @method getPatientSymptoms
+   * @param value 
+   * @description Get patient symptoms from details
+   */
   getPatientSymptoms(value) {
     let symptoms = [];
     if (value.symptom) {
@@ -204,6 +249,12 @@ class PatientDetails extends React.Component {
     }
     return symptoms;
   }
+
+  /**
+   * @method checkQuarantineDays
+   * @param value 
+   * @description Function to get days from 2 timestamps
+   */
   checkQuarantineDays(value) {
     let currentDate = moment(new Date().getTime());
     let start = moment(value.qurantine.start);
@@ -214,6 +265,11 @@ class PatientDetails extends React.Component {
     };
   }
 
+  /**
+   * @method changeRisk
+   * @param event 
+   * @description API implementation when risk change of particular patient
+   */
   changeRisk(event) {
     this.setState({ disableRiskContainer: true });
     const endpoint = `patients/assign-risk/${this.props.id}`;
@@ -225,12 +281,19 @@ class PatientDetails extends React.Component {
       this.setState({ disableRiskContainer: false });
       if (responseJson.responseCode !== "ERROR") {
         if(responseJson.ok) {
-          // Perform action
+          let { patient } = this.state;
+          patient.healthstatus = event === 'high' ? 'positive' : (event === 'medium' ? 'possible' : 'none');
+          this.setState({ patient });
         }
       }
     });
   }
 
+  /**
+   * @method changeQuarantine
+   * @param event 
+   * @description API implementation when quarantine status changed of patient
+   */
   changeQuarantine(event) {
     this.setState({ disableQuarantine: true });
     const endpoint = `patients/assign-quarantine/${this.props.id}`;
@@ -240,7 +303,13 @@ class PatientDetails extends React.Component {
       this.setState({ disableQuarantine: false });
       if (responseJson.responseCode !== "ERROR") {
         if(responseJson.ok) {
-          // Perform action
+          let { patient } = this.state;
+          if(patient.qurantine) {
+            patient.qurantine.isQurantine = event;
+          } else {
+            patient.qurantine = { isQurantine: event };
+          }
+          this.setState({ patient });
         }
       }
     });
@@ -470,12 +539,14 @@ class PatientDetails extends React.Component {
                           <span className="icon-label">
                             Islolation/Quarantine Days
                           </span>
-                          <Toggle
-                            className={`quarantine-toggle ${disableQuarantine ? 'button-disabled' : ''}`}
-                            defaultToggled={(patient.qurantine && patient.qurantine.isQurantine) ? patient.qurantine.isQurantine : false}
-                            {...toggleProps()}
-                            id="quarantine-toggle"
-                          />
+                          {userType === 1 ?
+                            <Toggle
+                              className={`quarantine-toggle ${disableQuarantine ? 'button-disabled' : ''}`}
+                              defaultToggled={(patient.qurantine && patient.qurantine.isQurantine) ? patient.qurantine.isQurantine : false}
+                              {...toggleProps()}
+                              id="quarantine-toggle"
+                            /> : null 
+                          }
                         </div>
                         <div className="bx--row row-padding">
                           {(patient.qurantine && patient.qurantine.isQurantine) ?

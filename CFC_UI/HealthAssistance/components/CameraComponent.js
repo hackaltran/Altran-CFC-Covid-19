@@ -38,9 +38,17 @@ export default class CameraController extends React.Component {
     };
     renderImage = () => {
         if (this.state.imageUrl) {
+
             return <Image source={{ uri: this.state.imageUrl }} style={{ width: 100, height: 100, borderRadius: 100 / 2 }} />
         }
-        return <Image source={require('../assets/images/avatar-safe.png')} style={{ width: 100, height: 100, borderRadius: 100 / 2 }} />
+        if (this.props.healthStatus == 'possible') {
+            return <Image source={require('../assets/images/avatar-possible.png')} style={{ width: 100, height: 100, borderRadius: 100 / 2 }} />
+        } else if (this.props.healthstatus == 'positive') {
+            return <Image source={require('../assets/images/avatar-positive.png')} style={{ width: 100, height: 100, borderRadius: 100 / 2 }} />
+        } else {
+            return <Image source={require('../assets/images/avatar-safe.png')} style={{ width: 100, height: 100, borderRadius: 100 / 2 }} />
+        }
+
 
     }
     render() {

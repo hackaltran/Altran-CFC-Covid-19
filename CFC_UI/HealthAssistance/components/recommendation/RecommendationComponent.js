@@ -18,7 +18,11 @@ function RenderSymptoms(props) {
                 {props.user.symptom.map((item, index) => {
                     return (
                         
-                            <Text key={index} style={[props.user.healthstatus == 'positive' ? styles.symptomPositive : styles.symptomPosible]}>{'\u2B24'} {item.experience}</Text>
+                            <Text key={index} style={[props.user.healthstatus == 'positive' ? styles.symptomPositive : styles.symptomPosible]}>{'\u2B24'} 
+                              <Text style={{color: "#393939"}}>
+                                  &nbsp;{item.experience}
+                              </Text>
+                            </Text>
                         
                     )
                 })}
@@ -42,9 +46,9 @@ class RecommendationComponent extends Component {
             )
         } else {
             return (
-                <View style={{ height: 325 }}>
+                <View style={{ height: 'auto' }}>
                     <Text style={{ marginBottom: 10, fontWeight: 'bold', marginRight: 160, marginTop: 10, fontSize: 14, color: '#393939' }}>
-                        Recommendtions
+                          Recommendations
                     </Text>
                     <View style={[this.props.user.user.healthstatus == 'positive' ? styles.postContentPositive : styles.postContentPossible]}>
                         <Text style={{ marginBottom: 5, fontSize: 14, color: 'black', fontWeight: 'bold', }}>
@@ -55,21 +59,7 @@ class RecommendationComponent extends Component {
                         </Text>
                         <Text style={styles.postTitle}>Alarming symptoms: </Text>
                         <RenderSymptoms user={this.props.user.user} />
-                        <Button
-                            buttonStyle={styles.buttonIsolate}
-                            icon={
-                                <Icon
-                                    name="arrow-right"
-                                    size={15}
-                                    color="#0198a2"
-                                    type="outline"
-                                    style={{ alignItems: 'flex-end', marginLeft: 20 }}
-                                />
-                            }
-                            title='Isolate yourself for 14days'
-                            titleStyle={{ color: "#0198a2", fontSize: 14 }}
-                            iconRight
-                        />
+                        <Text style={styles.isolateYourself}>Isolate yourself for 14 days.</Text>
                         <Button
                             buttonStyle={styles.buttonHealth}
                             icon={
@@ -113,9 +103,15 @@ const styles = StyleSheet.create({
 
     },
     postTitle: {
-        fontSize: 18,
+        fontSize: 14,
         fontWeight: 'bold',
         marginBottom: 7
+    },
+    isolateYourself: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        marginTop: 15,
+        marginBottom: 18
     },
     buttonIsolate: {
         flexDirection: 'row',

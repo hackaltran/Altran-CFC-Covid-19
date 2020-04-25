@@ -16,6 +16,11 @@ class Monitoring extends Component {
     this.handleSosCount = this.handleSosCount.bind(this);
   }
 
+  /**
+   * @method tabClk
+   * @param type 
+   * @description Handle tab click functionality
+   */
   tabClk(type) {
     const tabChange = type === this.state.tabType ? false : true;
       if(tabChange) {
@@ -23,6 +28,10 @@ class Monitoring extends Component {
       }
   }
 
+  /**
+   * @method handleSosCount
+   * @param {Data to find sos count from list} data 
+   */
   handleSosCount(data) {
     this.setState({sosCount: data.sosCount, possibleCount: data.possibleCount});
   }

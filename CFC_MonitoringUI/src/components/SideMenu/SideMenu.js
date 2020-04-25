@@ -35,6 +35,11 @@ class SideMenu extends Component {
         }
     }
 
+    /**
+     * @method switchSideTab
+     * @param type
+     * @description Page navigation when switching between options in side menu
+     */
     switchSideTab = (type) => {
         const sideTabChange = type === this.state.sideTabType ? false : true;
         if(sideTabChange) {
@@ -43,16 +48,28 @@ class SideMenu extends Component {
         }
     }
 
+    /**
+     * @method rightPanelClk
+     * @description Function to handle top right panel in header
+     */
     rightPanelClk = () => {
         this.setState({ isPanelOpen: !this.state.isPanelOpen });
     }
 
+    /**
+     * @method logoutClk
+     * @description Handle logout functionality
+     */
     logoutClk(event) {
         event.preventDefault();
         localStorage.removeItem('user_details');
         this.props.history.push('/login');
     }
 
+    /**
+     * @method menuClk
+     * @description Open and cluse side menu
+     */
     menuClk(event) {
         event.preventDefault();
         this.setState({ isSideNavOpen: !this.state.isSideNavOpen });

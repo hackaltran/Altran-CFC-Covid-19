@@ -39,6 +39,12 @@ class RegisterIndividual extends Component {
             mobileno: this.state.mobile,
             location: this.state.city
         }
+
+        if (userObj.mobileno == "" || userObj.mobileno.length !== 10) {
+           alert("Please enter a valid 10 digit mobile number.");
+           return false; 
+        }
+
         this.props.registerUser(userObj);
 
         this.setState({
@@ -74,7 +80,7 @@ class RegisterIndividual extends Component {
                     <View style={{ flex: 1, padding: 40 }}>
                         <Image source={require('../assets/images/icon.png')} 
                              style={{width: 40, height: 40 , alignSelf: "center",alignItems: "center"}} />
-                        <Text style={{ fontWeight: 'bold', alignSelf: 'center', fontSize: 18, marginLeft:33, color: '#161616' , paddingTop: 10 }}>
+                        <Text style={{ fontWeight: 'bold', alignSelf: 'center', fontSize: 20, color: '#161616' , paddingTop: 10 }}>
                             Covid-19 Health Assistance
                         </Text>
                     </View>
@@ -88,14 +94,13 @@ class RegisterIndividual extends Component {
                                 />
                         </View> 
                         <View style={styles.formRowCustom}>
-                            <Text style={styles.formLabel}>Enter Your Age</Text> 
+                            <Text style={styles.formLabel}>Enter Age</Text> 
                             <Picker
-                                mode="dropdown"
-                                style={{backgroundColor: 'white'}}
+                                style={{backgroundColor: 'white', width: '100%',alignItems: 'center'}}
                                 selectedValue={this.state.age}
                                 onValueChange={ (itemValue, itemIndex) => this.setState({ age: itemValue}) }                    >
                                 <Picker.Item label='1' value='1' />
-                                <Picker.Item label='2' value='2' />
+                                <Picker.Item label='2' value='2' /> 
                                 <Picker.Item label='3' value='3' />
                                 <Picker.Item label='4' value='4' />
                                 <Picker.Item label='5' value='5' />
@@ -204,31 +209,35 @@ class RegisterIndividual extends Component {
                                     uncheckedIcon='circle-o'
                                     checked={this.state.gender == 'Male'}
                                     onPress={() => this.setState({gender: 'Male'})}
-                                />	
+                                    checkedColor="#007d79"
+                                 />	
                                 <CheckBox
                                     title='Female'
                                     checkedIcon='dot-circle-o'
                                     uncheckedIcon='circle-o'
                                     checked={this.state.gender == 'Female'}
                                     onPress={() => this.setState({gender: 'Female'})}
-                                />
+                                    checkedColor="#007d79"
+                                 />
                                 <CheckBox
                                     title='Other'
                                     checkedIcon='dot-circle-o'
                                     uncheckedIcon='circle-o'
                                     checked={this.state.gender == 'Other'}
                                     onPress={() => this.setState({gender: 'Other'})}
-                                />
-                            </View>
+                                    checkedColor="#007d79"
+                                 /> 
+                            </View> 
                         </View>
                         <View style={styles.formRowCustom}>
-                            <Text style={styles.formLabel}>Enter Your Mobile Number</Text>
+                            <Text style={styles.formLabel}>Enter Mobile Number</Text>
                                 <TextInput style={{ height: 40, borderColor: 'gray', borderWidth: 1,paddingLeft: 10 }}
                                 onChangeText={(mobile) => { this.setState({ mobile: mobile}) }}
                                 value={this.state.mobile}
                                 keyboardType={'number-pad'} 
-                                placeholder="1234567890"
-                                /> 
+                                placeholder="Mobile Number" 
+                                maxLength={10}
+                                />  
                         </View> 
                         <View style={styles.formRowCustom} >
                             <Text style={styles.formLabel}>Enter City or Zip Code</Text>
@@ -240,11 +249,12 @@ class RegisterIndividual extends Component {
                         </View> 
                         <View style={styles.formRowCustom} >
                             <Button
-                                buttonStyle={styles.buttonColor} 
+                                buttonStyle={styles.buttonColor}  
                                 onPress={() => this.handelRegister()}
                                 title='Next' 
-                                style={{ paddingTop: 20 }} 
-                            />
+                                style={{ paddingTop: 20 }}  
+                                disabled={!this.state.name || !this.state.age || !this.state.mobile || !this.state.city }
+                            /> 
                         </View>
                     </View>
                 </View> 
@@ -282,6 +292,7 @@ const styles = StyleSheet.create({
         alignItems: 'stretch', 
         margin: 10,
         marginTop:15
+        
     },
     formRow: {
         alignItems: 'flex-start',
@@ -296,8 +307,9 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
     },
     formLabel: {
-        fontSize: 18,
-        marginBottom:5
+        fontSize: 12,
+        marginBottom:5,
+        color: '#393939'
     },
     formItem: {
         flex: 1

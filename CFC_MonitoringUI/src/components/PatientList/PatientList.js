@@ -21,7 +21,9 @@ class PatientList extends Component {
       patientsCount: 0,
       patientsList: [],
       dataLoader: true,
-      patientdetail: false
+      patientdetail: false,
+      filterDropdownValue: 'all',
+      filterTextValue: ''
     }
   }
 
@@ -60,11 +62,21 @@ class PatientList extends Component {
     };
   }
 
+  /**
+   * @method checkSOS
+   * @description Props to send to parent for sos count
+   */
   checkSOS = (possibleCount) => {
     const sosCount = this.state.patientsList.filter(value => (value.morbidity !== 'none' && value.healthstatus === 'positive')).length;
     this.props.getSosCount({sosCount, possibleCount});
   }
 
+
+  /**
+   * @method getLastUpdatedInfo
+   * @param value 
+   * @description Function to get last updated info from patient detail 
+   */
   getLastUpdatedInfo(value) {
     if(value.currentAssign.toLowerCase() === 'operator') {
       if(value.assignedByDoctor && value.assignedByDoctor.hasOwnProperty('name')) {
@@ -83,37 +95,89 @@ class PatientList extends Component {
     }
   }
 
+  /**
+   * 
+   * @param timestamp 
+   * @description Function to generate time format from timestamp
+   */
   generateTimeFormat(timestamp) {
     return moment(Number(timestamp)).format('h:mm a, DD MMM');
   }
 
+  /**
+   * @method getTravelHistory
+   * @param value 
+   * @description Function to get travel history from patient detail
+   */
   getTravelHistory(value) {
     if (value.symptom && value.symptom.length) {
       return value.symptom[value.symptom.length-1].travelled;
     } else return 'None';
   }
 
+  /**
+   * @method filterText
+   * @description Set variable when search text field value changes
+   */
+  filterText(event) {
+    this.setState({ [event.target.id]: event.target.value });
+  }
+
+  /**
+   * @method filterSelect
+   * @description Set variable when dropdown value changes
+   */
+  filterSelect(event) {
+    this.setState({ filterDropdownValue: event.selectedItem.id });
+  }
+
+  /**
+   * @method filterPatientList
+   * @description Filter patient list on text field change
+   */
+  filterPatientList() {
+    const { patientsList, userType, filterTextValue } = this.state;
+    let filteredPatientsList = patientsList;
+    if(filterTextValue !== '') {
+      const filterkey = userType === 1 ? 'name' : '_id';
+      filteredPatientsList = patientsList.filter(x => x[filterkey].toLowerCase().includes(filterTextValue.toLowerCase()));
+    }     
+    return this.filterByDropdown(filteredPatientsList);
+  }
+
+  /**
+   * @method filterByDropdown
+   * @param list 
+   * @description Filter patient list on selected dropdown value
+   */
+  filterByDropdown(list) {
+    const { filterDropdownValue } = this.state;
+    if(filterDropdownValue === 'morbidity') {
+      return list.filter(x => x.morbidity !== 'none');
+    } else if(filterDropdownValue === 'quarantine') {
+      return list.filter(x => (x.qurantine && x.qurantine.isQurantine));
+    } else if(filterDropdownValue === 'all') {
+      return list; 
+    }
+  }
+
   render() {
 
-    const { userType, isSearchBoxOpen, patientsCount, patientsList, dataLoader } = this.state;
+    const { userType, isSearchBoxOpen, patientsCount, patientsList, dataLoader, filterTextValue } = this.state;
     const { userStatus } = this.props;
 
     const filterItems = [
       {
-        id: 'option-1',
-        text: 'Positive',
+        id: 'morbidity',
+        text: 'Morbidity',
       },
       {
-        id: 'option-2',
-        text: 'Possible',
+        id: 'quarantine',
+        text: 'Quarantine',
       },
       {
-        id: 'option-3',
-        text: 'SOS',
-      },
-      {
-        id: 'option-4',
-        text: 'Status',
+        id: 'all',
+        text: 'All',
       }
     ];
 
@@ -136,7 +200,8 @@ class PatientList extends Component {
             </div>
             <div className={`col-lg-6 ${isSearchBoxOpen ? 'search-filter-content' : 'search-filter-flex'}`}>
               { isSearchBoxOpen ? 
-                <Search id="search-patient" labelText="Search Patients" placeHolderText="What are you looking for today?" className="search_box" /> : 
+                <Search id="filterTextValue" value={filterTextValue} labelText="Search Patients" placeHolderText="What are you looking for today?" className="search_box"
+                onChange={this.filterText.bind(this)} /> : 
                 <Search24 className="search_icon" onClick={() => { this.searchBtnClick() }} />
               }
               <Dropdown
@@ -145,6 +210,7 @@ class PatientList extends Component {
                 label= "Filter"
                 className="dropdown-search"
                 itemToString={item => (item ? item.text : '')}
+                onChange={this.filterSelect.bind(this)}
               />
             </div>
           </div>      
@@ -166,7 +232,7 @@ class PatientList extends Component {
           }
           <div className="patients_card_view_container">    
             {userType === 1 ? 
-              patientsList.map((value, index) => {
+              this.filterPatientList().map((value, index) => {
                 return(
                   <Link to={`/patientdetail/${value._id}`} key={index}>
                     <Tile className="doctor-card-view">
@@ -206,7 +272,7 @@ class PatientList extends Component {
                   </Link>
                 )
               }) : 
-              patientsList.map((value, index) => {
+              this.filterPatientList().map((value, index) => {
                 return(
                   <Link to={`/patientdetail/${value._id}`} key={index}>
                     <div 

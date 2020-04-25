@@ -76,7 +76,7 @@ class PersonalInformation extends Component {
 
                     <View style={{ flex: 9 }}>
                         <View style={styles.formRowCustom}>
-                            <Camera />
+                            <Camera healthStatus={user.healthstatus} />
                             <Text style={styles.formLabel}>Full Name</Text>
                             <TextInput value={this.state.name} style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 5, paddingLeft: 10 }}
                                 onChangeText={(text) => { this.setState({ name: text, enabled: true }) }}
@@ -198,7 +198,8 @@ class PersonalInformation extends Component {
                                 onChangeText={(mobile) => { this.setState({ mobile: mobile, enabled: true }) }}
                                 value={this.state.mobile}
                                 keyboardType={'number-pad'}
-                                placeholder="1234567890"
+                                placeholder="Mobile Number"
+                                maxLength={10}
                             />
                         </View>
                         <View style={styles.formRowCustom}>
@@ -214,7 +215,9 @@ class PersonalInformation extends Component {
                             <TextInput style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 5, paddingLeft: 10 }}
                                 onChangeText={(emergency) => { this.setState({ emergency: emergency, enabled: true }) }}
                                 value={this.state.emergency}
+                                keyboardType={'number-pad'}
                                 placeholder="Enter Emergency Contact number"
+                                maxLength={10}
                             />
                         </View>
                         <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
@@ -231,6 +234,7 @@ class PersonalInformation extends Component {
                                     onPress={() => this.handelUpdate()}
                                     title='Save'
                                     style={{ paddingTop: 20 }}
+                                    disabled={true}
                                     activeOpacity={this.state.enabled ? 1 : 1}
                                 />
                             </View>

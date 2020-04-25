@@ -78,7 +78,6 @@ class Register extends Component {
                     <Text style={{paddingTop: 3, fontSize: 20, marginTop:20, marginBottom:20, alignSelf: 'center' }}> OR </Text>
                     <Button
 						buttonStyle={styles.Healthbutton}
-                        onPress={() => navigate('DashboardPossible')}
                         borderColor= '#007d79'						
                         title='Health Worker' 
 						color='#007d79'
