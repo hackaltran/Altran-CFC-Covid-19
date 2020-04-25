@@ -97,7 +97,7 @@ Use the following URL's to access the existing infrastructure -
 | Infrastructure             | URL |
 | ------                     | ------ |
 | Patient Backend Service    | http://184.172.241.147:32544/ |
-| Patient App                | TBD |
+| Patient App                | https://github.com/hackaltran/Altran-CFC-Covid-19/tree/master/CFC_UI/apk |
 | Monitoring Backend Service | https://c4c-monitorapi.df.r.appspot.com/doctors |
 | Moniroting Dashboard       | https://c4c-monitor.df.r.appspot.com/login |
 
