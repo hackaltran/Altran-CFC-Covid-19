@@ -97,12 +97,12 @@ Use the README.md files to build and compile solutions as mentioned below -
 
 Use the following URL's to access the existing infrastructure -
 
-| Infrastructure             | URL |
+| Infrastructure             | Deployment |
 | ------                     | ------ |
-| Patient Backend Service    | http://184.172.241.147:32544/ |
-| Patient App                | https://github.com/hackaltran/Altran-CFC-Covid-19/tree/master/CFC_UI/apk |
-| Monitoring Backend Service | https://c4c-monitorapi.df.r.appspot.com/doctors |
-| Moniroting Dashboard       | https://c4c-monitor.df.r.appspot.com/login |
+| Patient Backend Service    | [Patient Restful APIs](http://184.172.241.147:32544/) |
+| Patient App                | [Mobile App - Patient](https://github.com/hackaltran/Altran-CFC-Covid-19/tree/master/CFC_UI/apk) |
+| Monitoring Backend Service | [Monitoring Restful APIs](https://c4c-monitorapi.df.r.appspot.com/doctors) |
+| Moniroting Dashboard       | [Monitoring Dashboard](https://c4c-monitor.df.r.appspot.com/login) |
 
 ## Live demo
 
