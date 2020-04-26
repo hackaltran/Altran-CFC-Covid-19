@@ -107,22 +107,19 @@ Use the following URL's to access the existing infrastructure -
 | Moniroting Dashboard       | [Monitoring Dashboard](https://c4c-monitor.df.r.appspot.com/login) |
 
 #### Default Credentials
-To use solution and existing deployed infrastructure, you can register yourself as a new patient or you can use the following default credentials saved in our cloudant database -
+To use solution and existing deployed infrastructure, you can register yourself as a new patient or you can use the default credentials saved in our cloudant database placed at respective paths-
 
 ###### Patient (to be used for accessing Patient Mobile App)
 ```
-Mobile Number : 7498234788
-Password : patient
+[Patient Credentials](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/CFC_UI/apk/patient_app_credentials.txt)
 ```
 ###### Doctor (to be used for accessing Monitoring Dashboard)
 ```
-Username : 480900901
-Password : medicine
+[Doctor Credentials](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/CFC_MonitoringUI/public/monitor_dasboard_credentials.txt)
 ```
 ###### Medical Assistant (to be used for accessing Monitoring Dashboard)
 ```
-Username : 480900801
-Password : hospital
+[Medical Assistant Credentials](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/CFC_MonitoringUI/public/monitor_dasboard_credentials.txt)
 ```
 
 ## Live demo
