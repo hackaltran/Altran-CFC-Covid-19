@@ -124,4 +124,3 @@ MonitorAPI BaseURL:
 |`/patients/comment/:patientId`|`Post`|`{ "comment": String, "timestamp": String, "doctor": String }`|
 |`patients/assign-risk/:patientId`|`Put`|` { "risk": String }`|
 |`/patients/assign-quarantine/:patientId`|`Put`|`{ "isQuarantine": Boolean }`|
-`
