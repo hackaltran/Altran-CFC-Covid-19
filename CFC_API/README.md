@@ -104,4 +104,14 @@ curl -kX GET https://<ip>:<port>/api/patient/<patientIP>
 ```
 __NOTE__: The public url must be secure having HTTPS protocol.
 
+ ## API Overview
  
+ PatientBaseURL 		
+http://184.172.241.147:30222		
+		
+| Action |	Method Type |	Request |
+|---|---|---|
+| `/api/user/signup`|	`Post` | `{ "name" : String, "gender" : String, "age" : Integer, "mobileno" : String, "location" : {"lat": String,  "lang"": String  }}`|
+|`/api/user/signin`|	`Post`|	`{ "id": String, "password": String }`|
+|`/api/user/userid`|	`Get`| 
+|`/api/patient/addsymptom`|	`Post`|	`{"user_id": String,"gender": String, "family": String, "travelled": String, "experience": String, "heart_rate":  String, "temperature":  String, "breathing_rate": String }`| 

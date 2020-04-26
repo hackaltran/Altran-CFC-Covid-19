@@ -107,3 +107,21 @@ ibmcloud ks workers cfc_monitor_nodejs_cluster
 curl -kX GET https://<ip>:<port>/doctors
 ```
 __NOTE__: The public url must be secure having HTTPS protocol.
+
+## API Overview
+ 
+MonitorAPI BaseURL: 
+`https://c4c-monitorapi.df.r.appspot.com/`
+		
+| Action |	Method Type |	Request |
+|---|---|---|
+| `/doctors`| `Get` |
+| `/doctors/:statusId/:doctorId` | `Get`| 
+|`/patients/:patientId`| `Get`| 
+|`/patients/status/:statusId`| `Get`| 
+| `/login`|	`Post` | `{ "username": String, "password":String }`|
+|` /patients/assign-doctor/:patientId`|`Put`| `{ "doctorId": String, "operatorId": String, "timestamp": String, "operatorName": String }`|
+|`/patients/comment/:patientId`|`Post`|`{ "comment": String, "timestamp": String, "doctor": String }`|
+|`patients/assign-risk/:patientId`|`Put`|` { "risk": String }`|
+|`/patients/assign-quarantine/:patientId`|`Put`|`{ "isQuarantine": Boolean }`|
+`
