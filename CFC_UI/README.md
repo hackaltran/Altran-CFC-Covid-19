@@ -1,6 +1,8 @@
 # CFC_UI
 
-######## Steps to create an android signed APK starts ###########
+Patient app will be used by user and share the symptoms with Health Assistant framework for quick analysis with the support of watson service. To customize the application, after getting the code of patient app, Here is the procedure to build Android APK file to install on the phone.
+
+#### Steps to create an android signed APK starts 
 
 Step 1: Generating an upload key
 
@@ -54,7 +56,7 @@ Just a few questions:
 ? Confirm Password: [hidden]
 
 ? Would you like to upload a keystore or have us generate one for you?
-If you don't know what this means, let us handle it! :)
+If you don't know what this means, let us help you on this -
 
   1) Let Expo handle the process!
   2) I want to upload my own keystore!
@@ -77,15 +79,18 @@ If you don't know what this means, let us handle it! :)
 
 3. Run 'yarn status:android'
 
+4. Use adb command to install on Android Phone
+
 This will give you the path to apk file. Just run that path on browser, it will start downloading your apk.
 
-############ Steps for an Android APK creation ends #############
+
+#### Symptoms Capture in the Patient App
+The patient app has been integrated with watson service, the watson service has been used to capture the user symptoms and stored the shared symptoms and generated results in the relevant cloudant database. The backend service generates the score for recently captured symptoms for each user and update the suspected analysis report about the covid-19 in DB.
 
 
+- Create and Deployed on watson service through IBM account. 
+-. Upload the entities, enable system entities and dialogs skills (The entities, dialog skills and other related information available at [PATH](https://github.com/hackaltran/Altran-CFC-Covid-19/tree/master/watson-symptom-capture).)
 
+- Customize theame on the watson and service and deploy the relevant watson service on IBM cloud.
 
-  
-
-
-
-
+###### Note - The patient app has already integrated the watson service to capture the symptoms of the user.
