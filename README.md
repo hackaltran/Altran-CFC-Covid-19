@@ -109,17 +109,11 @@ Use the following URL's to access the existing infrastructure -
 #### Default Credentials
 To use solution and existing deployed infrastructure, you can register yourself as a new patient or you can use the default credentials saved in our cloudant database placed at respective paths-
 
-###### Patient (to be used for accessing Patient Mobile App)
+###### Patient (to be used for accessing Patient Mobile App) - [PATH](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/CFC_UI/apk/patient_app_credentials.txt)
 
-[Patient Credentials](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/CFC_UI/apk/patient_app_credentials.txt)
+###### Doctor (to be used for accessing Monitoring Dashboard) - [PATH](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/CFC_MonitoringUI/public/monitor_dasboard_credentials.txt)
 
-###### Doctor (to be used for accessing Monitoring Dashboard)
-
-[Doctor Credentials](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/CFC_MonitoringUI/public/monitor_dasboard_credentials.txt)
-
-###### Medical Assistant (to be used for accessing Monitoring Dashboard)
-
-[Medical Assistant Credentials](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/CFC_MonitoringUI/public/monitor_dasboard_credentials.txt)
+###### Medical Assistant (to be used for accessing Monitoring Dashboard) - [PATH](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/CFC_MonitoringUI/public/monitor_dasboard_credentials.txt)
 
 ## Live demo
 
