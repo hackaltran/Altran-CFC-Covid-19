@@ -141,7 +141,7 @@ TBD
 - Hitesh Choudhary
 - Manoj Gupta
 - Chandresh Tiwari
-- Yogesh Sharma
+- Yogesh Kumar
 
 ## License
 
