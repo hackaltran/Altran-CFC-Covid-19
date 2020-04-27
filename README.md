@@ -14,10 +14,8 @@
 1. [Getting started](#getting-started)
 1. [Live demo](#live-demo)
 1. [Built with](#built-with)
-1. [Contributing](#contributing)
 1. [Versioning](#versioning)
 1. [Authors](#authors)
-1. [License](#license)
 1. [Acknowledgments](#acknowledgments)
 
 ### Value offered
@@ -58,7 +56,7 @@ We have completed and will present the overall platform design, flow, and an ini
 
 ## Project roadmap
 
-##### Detailed Roadmap is available at [PATH](offering-docs/Call%20for%20Code%20All%20is%20Well%20Platform%20Deck%20April%20V1.1.pdf)
+##### Detailed Roadmap is available at [PATH](offering-docs/Call%20for%20Code%20All%20is%20Well%20Platform%20Deck%20April%20V1.2.pdf)
 
 ![Architecture](offering-docs/Call-for-Code-All-is-Well-Platform.jpg)
 
@@ -159,4 +157,4 @@ Proprietary. The code is submitted on a “as is” basis for the sole purpose o
 * [IBM Watson](https://www.ibm.com/in-en/watson) - Watson is a question-answering computer system capable of answering questions posed in natural language, developed in IBM's DeepQA project.
 * [docker](https://www.docker.com/) - Docker is a set of platform as a service products that uses OS-level virtualization to deliver software in packages called containers.
 * [kubernetes](https://kubernetes.io/) - Kubernetes (K8s) is an open-source system for automating deployment, scaling, and management of containerized applications.
- 
+ * [Carbon Design System - IBM](https://www.carbondesignsystem.com/) - Design Language used for whole project
