@@ -1,11 +1,11 @@
 
 # Title
 
-are you well ?
+#### are you well ?
 
 ## Contents
 
-1. [Short description](#short-description)
+1. [Value Offered](#value-offered)
 1. [Demo video](#demo-video)
 1. [The architecture](#the-architecture)
 1. [Long description](#long-description)
@@ -38,7 +38,7 @@ TBD
 
 ## The architecture
 
-TBD
+![Architecture](tech-docs/architecture.png)
 
 ## Long description
 
