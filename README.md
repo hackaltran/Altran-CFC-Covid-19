@@ -137,6 +137,7 @@ To use solution and existing deployed infrastructure, you can register yourself 
 
 
 ## Versioning
+v1.0.0.0
 
 ## Authors
 
