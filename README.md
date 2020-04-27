@@ -151,7 +151,7 @@ TBD
 
 ## License
 
-TBD
+Proprietary. The code is submitted on a “as is” basis for the sole purpose of “Call for code 2020 COVID-19” challenge participation
 
 ## Acknowledgments
 
