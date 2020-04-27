@@ -58,7 +58,7 @@ We have completed and will present the overall platform design, flow, and an ini
 
 ##### Detailed Roadmap is available at [PATH](offering-docs/Call%20for%20Code%20All%20is%20Well%20Platform%20Deck%20April%20V1.2.pdf)
 
-![Architecture](offering-docs/Call-for-Code-All-is-Well-Platform.jpg)
+![Roadmap](offering-docs/Call-for-Code-All-is-Well-Platform-C-19.jpg)
 
 
 ## UX Design
