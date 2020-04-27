@@ -1,5 +1,5 @@
 
-FROM ubuntu:latest
+FROM ubuntu:18.04
 USER root
 
 WORKDIR /home/app

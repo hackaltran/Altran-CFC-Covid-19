@@ -16,7 +16,9 @@ https://www.docker.com/products/docker-desktop
 ```
 https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli
 ```
+- Kubernetes cluster on IBM cloud with cluster name as ‘cfc_monitor_nodejs_cluster’
 
+__Note :__ Ensure that ‘container-registry’ plugin is installed as part of IBM Cloud command line interface installation. If not, then please add the plugin separately.
 
 ### Installation
 
@@ -125,3 +127,5 @@ MonitorAPI BaseURL:
 |`patients/assign-risk/:patientId`|`Put`|` { "risk": String }`|
 |`/patients/assign-quarantine/:patientId`|`Put`|`{ "isQuarantine": Boolean }`|
 `
+
+

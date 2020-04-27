@@ -16,7 +16,10 @@ https://www.docker.com/products/docker-desktop
 ```
 https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli
 ```
+- Kubernetes cluster on IBM cloud with cluster name as ‘cfc_nodejs_cluster’
 
+
+__Note :__ Ensure that ‘container-registry’ plugin is installed as part of IBM Cloud command line interface installation. If not, then please add the plugin separately.
 
 ### Installation
 
@@ -114,4 +117,5 @@ http://184.172.241.147:30222
 | `/api/user/signup`|	`Post` | `{ "name" : String, "gender" : String, "age" : Integer, "mobileno" : String, "location" : {"lat": String,  "lang"": String  }}`|
 |`/api/user/signin`|	`Post`|	`{ "id": String, "password": String }`|
 |`/api/user/userid`|	`Get`| 
-|`/api/patient/addsymptom`|	`Post`|	`{"user_id": String,"gender": String, "family": String, "travelled": String, "experience": String, "heart_rate":  String, "temperature":  String, "breathing_rate": String }`| 
+|`/api/patient/addsymptom`|	`Post`|	`{"user_id": String,"gender": String, "family": String, "travelled": String, "experience": String, "heart_rate":  String, "temperature":  String, "breathing_rate": String }`|
+
