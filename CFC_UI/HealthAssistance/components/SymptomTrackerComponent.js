@@ -19,11 +19,10 @@ class SymptomTracker extends Component {
             return (
                 <View style={{ flex: 1 }}>
                     <WebView
-                        style={{ flex: 1 }}
-                        source={require("./index.html")}
+                        source={{ uri: 'https://chatbot-project-274815.df.r.appspot.com/index.html' }}
                     />
-                    <View style={{zIndex: 4, elevation: 3, right:0, top:0, position: "absolute"}}>
-                        <Button title='Submit' buttonStyle={{ width: 105, height: 48, borderRadius: 0}}
+                    <View>
+                        <Button title='Submit'
                             onPress={() => {
                                 this.props.user.user && this.props.user.user.symptomDataLen && this.props.user.user.symptomDataLen >= 1 ? navigate('Home') : navigate('DashboardPossible')
                             }}
