@@ -45,7 +45,7 @@ An Expo user account is required to proceed.
 Thanks for signing up for Expo!
 Just a few questions:
 
-? E-mail: shubham.kaushik@aricent.com
+? E-mail: saurabh10.gupta@aricent.com
 ? Username: healthAssistance
 ? Password: [hidden]
 ? Confirm Password: [hidden]
