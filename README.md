@@ -12,6 +12,8 @@
 1. [Project roadmap](#project-roadmap)
 1. [UX Design](#ux-design)
 1. [Getting started](#getting-started)
+1. [Deployment model](#deployment-model)
+1. [Configuration](#configuration)
 1. [Live demo](#live-demo)
 1. [Built with](#built-with)
 1. [Versioning](#versioning)
@@ -123,6 +125,15 @@ To use solution and existing deployed infrastructure, you can register yourself 
 ###### Doctor (to be used for accessing Monitoring Dashboard) - [PATH](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/CFC_MonitoringUI/public/monitor_dasboard_credentials.txt)
 
 ###### Medical Assistant (to be used for accessing Monitoring Dashboard) - [PATH](https://github.com/hackaltran/Altran-CFC-Covid-19/blob/master/CFC_MonitoringUI/public/monitor_dasboard_credentials.txt)
+
+## Deployment Model
+
+![Deployment](tech-docs/deployment.png)
+
+
+## Configuration
+
+![Configuration](tech-docs/configuration.png)
 
 
 ## Built with
