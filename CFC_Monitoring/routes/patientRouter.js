@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 let service = require('./service');
+const eventEmitter = require('../common');
 const patientRouter = express.Router();
 
 patientRouter.use(bodyParser.json());
@@ -16,6 +17,7 @@ patientRouter.route('/:patientId')
 .get((req,res,next) => {
     service.getPatient(req.params.patientId, function (err, data) {
         if(data) {
+           
             res.json(data);
             res.end();  
         } else {
@@ -63,6 +65,7 @@ patientRouter.route('/assign-doctor/:patientId')
     console.log('Updating the patient: ' + req.params.patientId + '\n');
     service.assignDoctor(req.params.patientId, req, function (err, data) {
         if(data) {
+            eventEmitter.emit("AssignDoctor",true)
             res.json(data);
             res.end();  
         } else {
@@ -71,6 +74,40 @@ patientRouter.route('/assign-doctor/:patientId')
         }
     });
 });
+
+//API to sos comments by operator/doctor
+patientRouter.route('/updateNewStatus/:patientId')
+.all((req,res,next) => {
+    res.statusCode = 200;
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+})
+.get((req,res,next) => {
+    service.getPatient(req.params.patientId, function (err, data) {
+        if(data) {
+            res.json(data);
+            res.end();  
+        } else {
+            res.statusCode = 400;
+            res.end("Error : Patient not found");
+        }
+    });
+})
+.put((req, res, next) => {
+    console.log('Updating the patient: ' + req.params.patientId + '\n');
+    service.updateNewStatus(req.params.patientId, req, function (err, data) {
+        if(data) {
+            eventEmitter.emit("AssignDoctor",true)
+            res.json(data);
+            res.end();  
+        } else {
+            res.statusCode = 400;
+            res.end("Error : Patient not found");
+        }
+    });
+});
+
 
 //API to assign risk by doctor
 patientRouter.route('/assign-risk/:patientId')
@@ -136,6 +173,38 @@ patientRouter.route('/comment/:patientId')
 .post((req, res, next) => {
     console.log('Updating comments for patient: ' + req.params.patientId + '\n');
     service.updateComment(req.params.patientId, req, function (err, data) {
+        if(data) {
+            res.json(data);
+            res.end();  
+        } else {
+            res.statusCode = 400;
+            res.end("Error : Patient not found");
+        }
+    });
+});
+
+//API to update comment by doctor
+patientRouter.route('/chat/:patientId')
+.all((req,res,next) => {
+    res.statusCode = 200;
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+})
+.get((req,res,next) => {
+    service.getPatientChat(req.params.patientId, function (err, data) {
+        if(data) {
+            res.json(data);
+            res.end();  
+        } else {
+            res.statusCode = 400;
+            res.end("Error : Patient not found");
+        }
+    });
+})
+.post((req, res, next) => {
+    console.log('Updating comments for patient: ' + req.params.patientId + '\n');
+    service.updateChat(req.params.patientId, req, function (err, data) {
         if(data) {
             res.json(data);
             res.end();  

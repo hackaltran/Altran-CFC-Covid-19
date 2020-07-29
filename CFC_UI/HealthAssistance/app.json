@@ -25,6 +25,7 @@
       "supportsTablet": true
     },
     "android": {
+      "icon": "./assets/images/AppIcon.png",
       "splash": {
         "image": "./assets/images/SplashScreenNew.png",
         "resizeMode": "contain",

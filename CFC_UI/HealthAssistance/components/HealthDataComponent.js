@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, ScrollView, StyleSheet, Image } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Image,AppState,ToastAndroid,TouchableOpacity,Alert,} from 'react-native';
 import HeaderComponent from './header/HeaderComponent';
 import ProgressComponent from './progress/progress.component';
 import LinechartComponent from './linechart/linechart.component';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { Button } from 'react-native-elements';
+import AddTemperatorComponent from './AddTemperatorComponent';
+import Modal from 'react-native-modal';
+import Icon from 'react-native-vector-icons/Feather';
+import { fetchUser } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
     return {
@@ -13,10 +17,18 @@ const mapStateToProps = state => {
     }
 }
 
+const mapDispatchToProps = dispatch => ({
+    fetchUser: (userId) => dispatch(fetchUser(userId)),
+})
+
 class HealthData extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {  
+            isVisible : false,   
+            SCREEN_NAME : '',
+          }  
     }
 
     getTemperature = (string) => {
@@ -77,6 +89,16 @@ class HealthData extends Component {
         return value;
     }
 
+    
+    remoceModal= () => {
+        this.setState({isVisible : false})
+        this.props.fetchUser(this.props.user.user.userId);       
+    }
+
+    resetModal= () => {
+        this.setState({isVisible : false})      
+    }
+
     render() {
 
         const graphData = this.props.user.user.symptom;
@@ -91,13 +113,15 @@ class HealthData extends Component {
         let bodyTempData = [];
         let heartRateData = [];
 
+        let bodyTempLabel = [];
         const { navigate } = this.props.navigation;
 
         if (graphData.length) {
             graphData.forEach((item, i) => {
 
-                let dateString = moment.unix(item.timestamp).format("Do MMM, HH:MM");
-
+                var a = moment(item.timestamp, 'x')
+                var timeLabel = a.format("DD MMM, hh:mm               ")
+               
                 let temp = this.getTemperature(item.temperature);
                 if (temp < 95) temp = 95;
                 if (temp > 105) temp = 105;
@@ -106,6 +130,7 @@ class HealthData extends Component {
                 if (heartRate < 60) heartRate = 60;
                 if (heartRate > 114) heartRate = 114;
 
+                bodyTempLabel.push(timeLabel);
                 bodyTempData.push(temp);
                 bodyTempGraphData.push(temp);
 
@@ -118,6 +143,14 @@ class HealthData extends Component {
             heartRateData = [60, 90, 120, 140, 160];
         }
 
+        var arraySize = bodyTempData.length;
+        if(arraySize>8){
+            var lowerRange = arraySize - 8
+            bodyTempData = bodyTempData.slice((lowerRange), (arraySize));
+            heartRateData = heartRateData.slice((lowerRange), (arraySize));
+            bodyTempLabel = bodyTempLabel.slice((lowerRange), (arraySize));
+            console.log("sub arrary created ")
+        }
         //----- CALCULATE DONUT DATA -----//
         let progress = 0;
         let completedDays = 0;
@@ -138,6 +171,27 @@ class HealthData extends Component {
 
         return (
             <View style={{ flex: 1 }}>
+                <Modal            
+                animationType = {"fade"}  
+                transparent = {false}  
+                visible = {this.state.isVisible}  
+                onBackdropPress = {()=>this.resetModal()}
+                onRequestClose = {() =>this.resetModal()}>  
+                {/*All views of Modal*/}  
+                 <View style={{ flex: 1 }}>
+                    <View style={{ alignSelf: 'flex-end'}}>
+                    <Button icon={<Icon name="x" size={18} /> }
+                            title=""
+                            type="clear"
+                            alignSelf ='flex-end'
+                            style={{ paddingTop: 20 }}
+                            onPress={this.resetModal}
+                            />
+                    </View>
+                     <AddTemperatorComponent sendData = {this.state } onPress = {this.remoceModal}/>
+               
+                </View>  
+            </Modal>  
                 <HeaderComponent navigation={navigate} />
                 <ScrollView showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false} style={styles.container}>
                     <View>
@@ -165,11 +219,18 @@ class HealthData extends Component {
                             <View style={{ paddingLeft: 20, marginTop: 6, position: "absolute" }}>
                                 <Image style={styles.imageStyle} source={require('../assets/images/hot.png')} />
                             </View>
-                            <Text style={{ paddingLeft: 40, fontWeight: "bold" }}>Body Temparature in °C</Text>
+                            <Text style={{ paddingLeft: 40, fontWeight: "bold" }}>Body Temparature in °F</Text>
                             <View style={{ paddingLeft: 310, position: "absolute" }}>
                                 <Image />
                             </View>
-                            <View style={{ paddingLeft: 330, marginTop: 6, position: "absolute" }}>
+                            <View style={{flex: 1, position: "absolute", alignSelf: 'flex-end',alignItems: "flex-end", marginTop: 6,   flexDirection: 'row' }}>
+                            
+                            {/* <TouchableOpacity  onPress={() => this.FunctionBodyTemp()}> this.state.isVisible   BODYTEMP */}
+                            <TouchableOpacity  onPress={() => {this.setState({ isVisible : true, SCREEN_NAME : "BODYTEMP"})} }>
+
+                                <Image style={styles.imageStyleAddButton} source={require('../assets/images/add_icon.png')} />
+                            </TouchableOpacity>
+
                                 <Image style={styles.imageStyle} source={require('../assets/images/filter_1.png')} />
                             </View>
                             {!graphData.length ? (
@@ -177,11 +238,11 @@ class HealthData extends Component {
                                     No data available
                                 </Text>
                             ) : null}
-                            <LinechartComponent data={bodyTempData} graphData={bodyTempGraphData} formatLabel={'ºC'} />
-                            <View style={{ paddingLeft: 20, marginTop: 225, position: "absolute" }}>
+                            <LinechartComponent data={bodyTempData} graphData={bodyTempGraphData} label = {bodyTempLabel} formatLabel={'ºF'} />
+                            <View style={{ paddingLeft: 20, marginTop: 273, position: "absolute" }}>
                                 <Image style={styles.imageStyle} source={require('../assets/images/information.png')} />
                             </View>
-                            <Text style={{ paddingLeft: 40, marginBottom: 20, color: '#6f6f6f' }}>98 °C is normal temperature</Text>
+                            <Text style={{ paddingLeft: 40, marginBottom: 20, color: '#6f6f6f' }}>98 °F is normal temperature</Text>
                         </View>
                     </View>
 
@@ -195,16 +256,26 @@ class HealthData extends Component {
                             <View style={{ paddingLeft: 310, position: "absolute" }}>
                                 <Image />
                             </View>
-                            <View style={{ paddingLeft: 330, marginTop: 6, position: "absolute" }}>
+                            <View style={{flex: 1, position: "absolute", alignSelf: 'flex-end',alignItems: "flex-end", marginTop: 6,   flexDirection: 'row' }}>
+                             {/* <View style={{ alignSelf: 'flex-end', alignItems: "flex-end", flexDirection: 'row',backgroundColor: '#ff0000' }}> */}
+
+                             <TouchableOpacity  onPress={() => {this.setState({ isVisible: true, SCREEN_NAME : "HEART_RATE"})}}> 
+
+                                <Image style={styles.imageStyleAddButton} source={require('../assets/images/add_icon.png')} />
+                                </TouchableOpacity>
                                 <Image style={styles.imageStyle} source={require('../assets/images/filter_1.png')} />
+                               
+                                {/* </View> */}
+                               
+                                
                             </View>
                             {!graphData.length ? (
                                 <Text style={{ marginTop: 100, marginLeft: 30, position: 'absolute', alignSelf: 'center', fontSize: 12, color: '#6f6f6f' }}>
                                     No data available
                                 </Text>
                             ) : null}
-                            <LinechartComponent data={heartRateData} graphData={heartRateGraphData} formatLabel={''} />
-                            <View style={{ paddingLeft: 20, marginTop: 225, position: "absolute" }}>
+                            <LinechartComponent data={heartRateData} graphData={heartRateGraphData} label = {bodyTempLabel} formatLabel={'Bpm'} />
+                            <View style={{ paddingLeft: 20, marginTop: 273, position: "absolute" }}>
                                 <Image style={styles.imageStyle} source={require('../assets/images/information.png')} />
                             </View>
                             <Text style={{ paddingLeft: 40, marginBottom: 20, color: '#6f6f6f' }}>Normal heart rate is between 70 and 100 Bpm</Text>
@@ -244,10 +315,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#f6f6f6',
     },
     imageStyle: {
-        width: 10,
-        height: 10
+        width: 14,
+        height: 14
+    },
+    imageStyleAddButton: {
+        width: 14,
+        height: 14,
+        marginRight : 8
     }
 
 });
 
-export default connect(mapStateToProps)(HealthData);
+export default connect(mapStateToProps,mapDispatchToProps)(HealthData);

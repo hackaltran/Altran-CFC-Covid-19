@@ -1,16 +1,24 @@
 import React, { Component } from "react";
 import moment from 'moment';
 import "./PatientList.scss";
+import  {configSetting } from '../../AppConfiguration.js';
+import notification_logo from '../../assets/images/notification.png';
+import socketIOClient from "socket.io-client";
+
+
 import {
   Tile,
   Dropdown,
   Search,
   Loading
 } from "carbon-components-react";
-import { Location16, Warning16, Search24, Information16 } from '@carbon/icons-react';
+import { Location16, WarningFilled20, Search24, Information16, Warning16,WarningAlt16,WarningAltFilled16,WarningAltInvertedFilled24} from '@carbon/icons-react';
 import { getapi } from '../../services/webservices';
 import { Link } from "react-router-dom";
 import PatientDetails from "../PatientDetails/PatientDetails";
+
+const socket = socketIOClient(configSetting.BASE_URL);
+
 
 class PatientList extends Component {
   constructor(props) {
@@ -23,15 +31,42 @@ class PatientList extends Component {
       dataLoader: true,
       patientdetail: false,
       filterDropdownValue: 'all',
-      filterTextValue: ''
+      filterTextValue: '',
+      sosCount:0,
+      counter:0
     }
+    this.setSOSAlertCallBackValue = this.setSOSAlertCallBackValue.bind(this)
+    const socket = socketIOClient(configSetting.BASE_URL);
+    socket.on("get_all_patients", data => {
+     if(this.state.userType === 1){
+     this.getRefreshDataFromServer();
+     }
+     });
   }
 
-  componentDidMount() {
+ async componentDidMount() {
+  this.getRefreshDataFromServer() 
+  try {
+    setInterval(async () => {
+      if(this.state.counter === 0){
+        this.setState({counter:1})
+      } else {
+        this.setState({counter:0})
+      }
+    }, configSetting.animationTimer);
+  } catch(e) {
+    console.log(e);
+  }
+  }
+  componentWillMount(){
+    window.location.reload(true);
+  }
+ 
+  getRefreshDataFromServer() {
     let endpoint = '';
     if(localStorage.getItem('user_details')) {
       const user_details = JSON.parse(localStorage.getItem('user_details'));
-      this.setState({userType: user_details.usertype === 'doctor' ? 1 : 2});       
+      this.setState({userType: user_details.usertype === 'doctor' ? 1 : 2});
       if(user_details.usertype === 'doctor') {
         endpoint = this.props.userStatus === 'All' ? 'doctors/103/'+user_details.id : (this.props.userStatus === 'Positive' ? 'doctors/101/'+user_details.id : 'doctors/102/'+user_details.id);
       } else {
@@ -43,8 +78,12 @@ class PatientList extends Component {
         this.setState({dataLoader: false});
         if(responseJson.docs) {
           const possibleCount = responseJson.docs.filter(value => value.healthstatus === 'possible').length;
+          const positiveCount = responseJson.docs.filter(value => value.healthstatus === 'positive').length;
+
           this.setState({ patientsList: responseJson.docs, patientsCount: responseJson.docs.length  });
-          this.checkSOS(possibleCount);
+          if(this.props.userStatus === 'All'){
+          this.checkSOS(possibleCount,positiveCount);
+          }
         }
     })
   }
@@ -66,9 +105,14 @@ class PatientList extends Component {
    * @method checkSOS
    * @description Props to send to parent for sos count
    */
-  checkSOS = (possibleCount) => {
-    const sosCount = this.state.patientsList.filter(value => (value.morbidity !== 'none' && value.healthstatus === 'positive')).length;
-    this.props.getSosCount({sosCount, possibleCount});
+  checkSOS = (possibleCount,positiveCount) => {
+    const highRiskSOSCount = this.state.patientsList.filter(value => (value.isSosRaised === true) && (value.healthstatus === 'positive')).length;
+    const mediumRiskSOSCount = this.state.patientsList.filter(value => (value.isSosRaised === true) && (value.healthstatus ==='possible')).length;
+    const normalSOSCount = this.state.patientsList.filter(value => (value.isSosRaised === true) && (value.healthstatus ==='none')).length;
+    const allPatientsRiskSOSCount = normalSOSCount + highRiskSOSCount + mediumRiskSOSCount;
+    const totalSOSCount = this.state.patientsList.filter(value => (value.isSosRaised === true)).length;
+    this.setState({ sosCount: totalSOSCount });
+    this.props.getSosCount({highRiskSOSCount,mediumRiskSOSCount,possibleCount,positiveCount,allPatientsRiskSOSCount});
   }
 
 
@@ -161,6 +205,11 @@ class PatientList extends Component {
     }
   }
 
+  /*Set the SOS Alert Notificaition*/
+  setSOSAlertCallBackValue(value){
+   this.props.sosAlertCallBack(value)
+  }
+
   render() {
 
     const { userType, isSearchBoxOpen, patientsCount, patientsList, dataLoader, filterTextValue } = this.state;
@@ -194,8 +243,8 @@ class PatientList extends Component {
           <div className="bx--row row-margin">
             <div className="col-lg-6 patient-count">
               {userStatus === 'All' ? 
-                <p className="header-title">Showing All {patientsCount} patients</p> : 
-                <p className="header-title">Showing {patientsCount} COVID-19 {userStatus} patients</p>
+                <p className="header-title">Showing All {patientsCount} Patients</p> : userStatus === 'Possible' ?
+                <p className="header-title">Showing {patientsCount} Medium Risk Patients</p> : userStatus === 'Positive'?  <p className="header-title">Showing {patientsCount} High Risk Patients</p> :null
               }
             </div>
             <div className={`col-lg-6 ${isSearchBoxOpen ? 'search-filter-content' : 'search-filter-flex'}`}>
@@ -222,11 +271,11 @@ class PatientList extends Component {
               </div>
               <div className="box-container">
                 <div className="yellow-bg-color identity-cont"></div>
-                <span>COVID-19 Possible</span>
+                <span>Medium Risk</span>
               </div>
               <div className="box-container">
                 <div className="red-bg-color identity-cont"></div>
-                <span>COVID-19 Positive</span>
+                <span>High Risk</span>
               </div>
             </div> : null 
           }
@@ -236,9 +285,19 @@ class PatientList extends Component {
                 return(
                   <Link to={`/patientdetail/${value._id}`} key={index}>
                     <Tile className="doctor-card-view">
-                      {value.morbidity !== 'none' ? 
+                      {value.isSosRaised === true && value.assignedByOperator.isnewPatient === false ?  
                         <div className="alert_style">
-                          <span className="alert_label">1 Morbidity</span>
+                          <span className="alert_label">1 SOS</span>
+                        </div> : null 
+                      }
+                      { value.doctorId.length > 0 && value.assignedByOperator.isnewPatient === true?
+                       <div className="new_alert_style">
+                       <span className="new_alert_label">New</span>
+                      </div> : null
+                      }
+                      {value.isSosRaised === true && value.assignedByOperator.isnewPatient === true ?  
+                        <div className="alert_style_new_sos">
+                          <span className="alert_label">1 SOS</span>
                         </div> : null 
                       }
                       <div className="name_risk_style">
@@ -278,11 +337,18 @@ class PatientList extends Component {
                     <div 
                     className={`operator-card-view ${value.healthstatus === 'positive' ? 'red-bg-color' : (value.healthstatus === 'possible' ? 'yellow-bg-color' : 'green-bg-color')}`}
                     >
-                      {value.morbidity !== 'none' ? 
+
+                      
+                      {value.isSosRaised == true && this.state.counter === 1?
+                       <div className="sos-alert-notify"><img className="notify-img"  src= {notification_logo} alt="pic" /></div>:null
+                      }
+
+{value.isSosRaised == true  && this.state.counter === 0 ? 
                         <div className="sos-alert">
-                          <Warning16 className="sos-icon" />
+                          <WarningFilled20 className="sos-icon" />
                         </div> : null 
                       }
+                  
                       <span className="id-style">#{value._id}</span>
                     </div>
                   </Link>
@@ -290,7 +356,7 @@ class PatientList extends Component {
               })
             }
           </div>
-        </div>) : <PatientDetails id={this.state.patientdetail} />
+        </div>) : <PatientDetails {...this.props} setSOSAlertCallBackValue={ this.setSOSAlertCallBackValue} id={this.state.patientdetail} />
         }
       </React.Fragment>
     );

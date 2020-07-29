@@ -24,6 +24,7 @@ class Login extends Component {
             id: '',
             password: '',
             showModal: false
+            
         }
     }
 
@@ -61,7 +62,7 @@ class Login extends Component {
             password: this.state.password
         }
         
-        if (userObj.id.length !== 10) {
+        if (userObj.id.length !== 12) {
            alert("Please enter a valid 10 digit mobile number.");
            return false; 
         }
@@ -108,7 +109,7 @@ class Login extends Component {
                                     value={this.state.id}
                                     placeholder="Enter Mobile Number" 
                                     placeholderTextColor="#a8a8a8"
-                                    maxLength = {10}
+                                    maxLength = {12}
                                 /> 
                             </View> 
                             <View style={styles.formRowCustom}> 

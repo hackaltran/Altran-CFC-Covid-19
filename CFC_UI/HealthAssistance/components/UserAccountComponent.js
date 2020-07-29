@@ -27,7 +27,7 @@ class UserAccount extends Component {
         return (
             <View style={{ flex: 1 }}>
                 {/* <HeaderComponent navigation={navigate} /> */}
-                <Personal />
+                {/* <Personal /> */}
                 {/* <Button
                     onPress={() => this.logout()}
                     title='Logout' 

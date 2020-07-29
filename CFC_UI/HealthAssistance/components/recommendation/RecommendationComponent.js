@@ -10,12 +10,20 @@ const mapStateToProps = state => {
         user: state.user
     }
 }
+function getUniqueArray(arr, index) {
+    const uniqueArray = arr
+         .map(e => e[index])
+         .map((e, i, final) => final.indexOf(e) === i && i)
+        .filter(e => arr[e]).map(e => arr[e]);      
+     return uniqueArray;
+  }
 
 function RenderSymptoms(props) {
     if (props.user.symptom) {
+        var uniqueArray = getUniqueArray( props.user.symptom, 'experience' );
         return (
             <View>
-                {props.user.symptom.map((item, index) => {
+                {uniqueArray.map((item, index) => {
                     return (
                         
                             <Text key={index} style={[props.user.healthstatus == 'positive' ? styles.symptomPositive : styles.symptomPosible]}>{'\u2B24'} 
@@ -62,6 +70,7 @@ class RecommendationComponent extends Component {
                         <Text style={styles.isolateYourself}>Isolate yourself for 14 days.</Text>
                         <Button
                             buttonStyle={styles.buttonHealth}
+                            onPress={() => {this.props.navigation('HealthData')} }
                             icon={
                                 <Icon
                                     name="plus"

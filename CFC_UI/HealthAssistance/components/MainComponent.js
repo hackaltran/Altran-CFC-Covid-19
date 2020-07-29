@@ -5,14 +5,17 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import Constants from 'expo-constants';
 import Register from './RegisterComponent';
 import RegisterIndividual from './RegisterIndividualComponent';
+import MobileNumberComponent from './MobileNumberComponent';
 import RegisterMedical from './RegisterMedicalComponent';
 import User from './UserAccountComponent';
 import HealthData from './HealthDataComponent';
 import { connect } from 'react-redux';
-import { registerUser ,fetchUser } from '../redux/ActionCreators';
+import { registerUser ,fetchUser, updatePatientDetails } from '../redux/ActionCreators';
 import DashboardPossible from './DashboardPossibleComponent';  // Dashboard Possible
 import Login from './LoginComponent';
+import ResetNumberComponents from './ResetNumberComponent';
 import SymptomTracker from './SymptomTrackerComponent';
+import PersonalInformation from './PersonalInformationComponent';
 
 
 const mapStateToProps = state => {
@@ -22,23 +25,29 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    // fetchUser: (userId) => dispatch(fetchUser({ success: true, userId: userId})),
+     fetchUser: (userId) => dispatch(fetchUser({ success: true, userId: userId})),
     registerUser: (userObj) => dispatch(registerUser(userObj))
 })
+
+
 
 // main navigation component
 const MenuNavigator = createStackNavigator({
     Login: { screen: Login },
     Register: { screen: Register },
     RegisterIndividual: { screen: RegisterIndividual } ,
+    MobileNumberComponent: { screen: MobileNumberComponent } ,
     RegisterMedical: { screen: RegisterMedical },   
     SymptomTracker: { screen: SymptomTracker, navigationOptions: {header: null} },   
-    DashboardPossible: { screen: DashboardPossible }
+    DashboardPossible: { screen: DashboardPossible }, 
+    PersonalInformation: {screen : PersonalInformation},
+  
 }, { 
-    initialRouteName: 'Login',
+   initialRouteName: 'Login',
     navigationOptions: { 
         headerMode: false,
         headerShown: false,
+        headerLeft: null,
         headerTransparent: true
     }
 });
@@ -72,8 +81,8 @@ const BottomTabNavigator = createBottomTabNavigator({
             tabBarIcon: ({ tintColor }) => <Icon type='font-awesome' name="comments" color={tintColor} />
         }
     },
-    Account: { 
-        screen: User,
+    PersonalInformation: { 
+        screen: PersonalInformation,
         navigationOptions: {
             title: 'Account',
             tabBarVisible: true,
@@ -84,6 +93,8 @@ const BottomTabNavigator = createBottomTabNavigator({
 },{
     initialRouteName: 'Home'
 });
+
+
 
 class Main extends Component {
 
@@ -103,7 +114,7 @@ class Main extends Component {
             this.props.user.user.symptomDataLen && this.props.user.user.symptomDataLen >= 1) {
                 return(
                     <View style={{flex:1, paddingTop: Platform.OS === 'ios' ? 0 : Constants.statusBarHeight }}>
-                        <BottomTabNavigator />
+                        <BottomTabNavigator/>
                     </View>
                 );  
             

@@ -54,7 +54,7 @@ class Register extends Component {
         const { navigate } = this.props.navigation;
 
         return (
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:"#f6f6f6"}}>
                 <View>
                     <Image source={require('../assets/images/icon.png')} 
                      style={{width: 40, height: 40}} />

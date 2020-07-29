@@ -46,50 +46,61 @@ function RenderHealthSatus(props) {
                 <Text style={{ color: '#24a148' }}>You're safe & Healthy.</Text>
             </View>
         );
-    }
-    
+    }  
 
 }
 
 function ProfileIconRender (props) {
 
-    if (props.healthstatus == 'none') {
-        return(
-            <View style={{ marginRight: 10}}>
-                    <Image style={styles.imageStyle}
-                        source={require('../../assets/images/avatar-safe.png')} />
-                </View>
-        );
-    } else if (props.healthstatus == 'possible') {
-        return(
-            <View style={{ marginRight: 10}}>
-                    <Image style={styles.imageStyle}
-                        source={require('../../assets/images/avatar-possible.png')} />
-                </View>
-        );
-    } else if (props.healthstatus == 'positive') {
-        return(
-            <View style={{ marginRight: 10}}>
-                    <Image style={styles.imageStyle}
-                        source={require('../../assets/images/avatar-positive.png')} />
-                </View>
-        );
+    if (props.healthstatus == 'possible'){
+        var borderColor= "#ff832b";
+        var imagePath =require("../../assets/images/avatar-possible.png");
+    }else if (props.healthstatus == 'positive'){
+        var borderColor = "#da1e28";
+        var imagePath = require("../../assets/images/avatar-positive.png");
     } else {
+        var borderColor = "#24a148";
+        var imagePath =require("../../assets/images/avatar-safe.png");
+    }
+    //alert(props.userImage)
+    if(props.userImage)
+    {
         return(
-            <View>
-                <Text style={{ color: '#24a148' }}>You're safe & Healthy.</Text>
-            </View>
+                <View style={{ marginRight: 10}}>
+                        <Image 
+                        style={{ width: 54, height: 54, borderRadius: 54/2, borderColor: borderColor, borderWidth: 2}}
+                        source={{ uri: props.userImage}} />
+                </View>
         );
     }
-
+else{
+    return(
+                <View style={{ marginRight: 10}}>
+                        <Image 
+                       style={{ width: 54, height: 54, borderRadius: 100/2 ,borderColor: borderColor,borderWidth: 3}}
+                         />
+                    </View>
+            );
+}
 }
 
 class HeaderComponent extends Component {
 
+    state = {
+        imageUrl: '',
+    };
+
+    componentDidMount(){
+        if (this.props.user.user && this.props.user.user.userId != null) {
+            this.props.fetchUser(this.props.user.user.userId).then((response)=>{
+            })
+        }
+
+    }
     render() {
         return (
             <View style={styles.profile}>
-                <ProfileIconRender healthstatus={this.props.user.user.healthstatus} />
+                <ProfileIconRender healthstatus={this.props.user.user.healthstatus} userImage = {this.props.user.user.imageUrl} />
                 <View style={{ marginRight: 10 }}>
                     <Text style={{ color: "#333333", fontSize: 16, fontWeight: "bold" }}>{this.props.user.user.name}</Text>
                     <Text>ID: {this.props.user.user.userId}</Text>
@@ -135,7 +146,6 @@ const styles = StyleSheet.create({
         paddingTop: 20
     },
     imageStyle: {
-        width: 54,
-        height: 54
+         width: 100, height: 100, borderRadius: 100 / 2 
     }
 })

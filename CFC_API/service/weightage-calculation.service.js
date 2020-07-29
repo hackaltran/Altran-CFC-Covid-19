@@ -145,9 +145,11 @@ module.exports = {
         //////////////////////////////////////////////////////////
         // FIX: Temperature value in Number/String both take care.
         //////////////////////////////////////////////////////////
+        var lastTemperature;
         if (symptom && symptom.temperature) {
             if (!isNaN(Number(symptom.temperature))) {
                 let temp = Number(symptom.temperature);
+                lastTemperature = temp;
                 symptom.temperature = temp <= 98.6                  ? 'normal'
                                     : temp > 98.6 && temp <= 99.5   ? 'medium'
                                     : temp > 99.5 && temp <= 102    ? 'high' 
@@ -158,6 +160,9 @@ module.exports = {
 
         let temperatureWeightage = 0;
         let value = symptom.temperature ? symptom.temperature.trim().toLowerCase() : '';
+        if(lastTemperature){
+            symptom.temperature = lastTemperature.toString();
+        }
         switch (value) {
             case 'normal':
                 temperatureWeightage = 1;
@@ -186,8 +191,27 @@ module.exports = {
             return 0;
         }
 
+        //////////////////////////////////////////////////////////
+        // FIX: Heart rate value in Number/String both take care.
+        //////////////////////////////////////////////////////////
+        var lastHeartRate;
+        if (symptom && symptom.heart_rate) {
+            if (!isNaN(Number(symptom.heart_rate))) {
+                let temp = Number(symptom.heart_rate);
+                lastHeartRate = temp;
+                symptom.heart_rate = temp <= 90                   ? 'normal'
+                                    : temp > 90 && temp <= 120    ? 'medium'
+                                    : temp > 120 && temp <= 150   ? 'high' 
+                                    : 'very high';
+            }
+        }
+        //////////////////////////////////////////////////////////
+
         let pulseWeightage = 0;
         let value = symptom.heart_rate ? symptom.heart_rate.trim().toLowerCase() : '';
+        if(lastHeartRate){
+            symptom.heart_rate = lastHeartRate.toString();
+        }
         switch (value) {
             case 'normal':
                 pulseWeightage = 1;

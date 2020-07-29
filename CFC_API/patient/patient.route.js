@@ -14,6 +14,20 @@ router.post('/findsymptom', function (req, res, next) {
     PatientController.findsymptom(req, res, next);
 });
 
+router.post('/updatesymptom', function (req, res, next) {
+    PatientController.updatesymptom(req, res, next);
+});
+
+router.get('/sosStatus/:patientid', PatientController.sosStatus);            //API TO GET THE STATUS OF SOS
+
+router.post('/raiseSOS', function (req, res, next) {
+    PatientController.raiseSOS(req, res, next);
+});                                                                          //API TO RAISE/CANCEL SOS
+
+
+
+
+
 // router.post('/add', function(req, res, next) {
 //    PatientController.add(req, res, next);
 // });

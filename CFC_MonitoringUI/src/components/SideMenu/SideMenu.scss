@@ -14,12 +14,246 @@
     .header-text:focus {
         border: none;
     }
-    .header-right-user:hover {
+    .header-right-user {
         background-color: #007D79;
+        pointer-Events: 'none';
+        cursor: 'none';
+        height:10px;
     }
+    .notify-img1{
+        margin-right:20px;
+        margin-top: 15px; 
+    } 
+    .notify-img2{
+        margin-right:-330px;
+        margin-top: 15px; 
+    }
+    .notify-img{
+        width: 15px;
+        height: 17px;
+    }
+    .modal {
+      max-height: 254px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      width: min-content;
+    
+       .header {
+        width: 285px;
+        border-bottom: 1px solid gray;
+        font-size: 14px;
+        height: 49px;
+        margin-left: -4px;
+      }
+      
+      .patient-data-unread{
+        width: 285px;
+        border-bottom: 1px solid gray;
+        font-size: 14px;
+        height: 70px;
+        margin-left: -8px;
+        background-color: #edfffe;  
+      }
+      .patient-data-unread > .timestamp{
+        float: left;
+        margin-left:10px;
+        margin-top: 15px;
+        font-size:12px;
+        color: #6f6f6f;
+        font-weight: 500;
+
+     }
+     
+     .patient-data-unread > .notification-text{
+        float: left;
+        margin-left:10px;
+        margin-top: 8px;
+        font-size: 13px;
+        color: #161616;
+        font-size: 12px;
+        font-weight: 500;
+        
+    }
+    .patient-data-unread  > .notification-text > .link-style{
+        color: #161616;
+    }
+
+    .patient-data-read{
+        width: 285px;
+        border-bottom: 1px solid gray;
+        font-size: 14px;
+        height: 70px;
+        margin-left: -4px;
+        background-color:#ffffff;  
+      }
+   
+      .patient-data-read > .timestamp{
+        float: left;
+        margin-left:10px;
+        margin-top: 15px;
+        font-size:12px;
+        color: #6f6f6f;
+        font-weight: 500;
+     }
+     
+     .patient-data-read > .notification-text{
+        float: left;
+        margin-left:10px;
+        margin-top: 8px;
+        font-size: 13px;
+        color: #161616;
+        font-size: 12px;
+        font-weight: 500;
+    }
+    .patient-data-read  > .notification-text > .link-style{
+        color: #161616;
+    }
+     .header > .notification{
+        float:left;
+        margin-left:10px;
+        margin-top: 15px;
+        font-weight:600;
+        font-size:14px;
+        width: 84px;
+        height:18px;
+      }
+     .header > .dismiss-all{
+        margin-top:15px;
+        float: right;
+        margin-right:20px;
+        color: #007d79;
+        text-decoration-line: underline;
+
+      }
+      .bottom-view {
+        width: 285px;
+        font-size: 14px;
+        height: 49px;
+        margin-left: -4px;
+      }
+      .bottom-view > .view-text{
+        float:left;
+        margin-left:12px;
+        margin-top: 22px;
+        font-weight:600;
+        height: 18px;
+        ; 
+      }
+      .bottom-view > .setting{
+        float: right;
+        margin-top:20px;
+        margin-right:20px;
+      }
+      .bottom-view > .setting > .setting-img {
+        width: 17px;
+        height: 17px; 
+      }
+    }
+    .menu{
+        max-height: 350px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+        
+        .header {
+            width: 465px;
+            border: none;
+            font-size: 14px;
+            height: 49px;
+          }
+          .header > .notification{
+            float:left;
+            margin-left:16px;
+            margin-top: 15px;
+            font-weight:400;
+            font-size:20px;
+            width: 114px;
+            height: 25px;
+          }
+          .header > .cross {
+              float: right;
+              margin-right: 10px;
+              margin-top: 10px;
+              width: 25px;
+              height: 26px;
+        }
+        .main-view{
+        position: relative;
+        width: 465px;
+        }
+        .main-view > .patient-data-read{
+        border-bottom: 1px solid lightgrey;
+        font-size: 14px;
+        height: 70px;
+        background-color: white;
+        white-space: nowrap;
+        margin-left: 16px;
+        }
+       
+        .main-view >.patient-data-read > .timestamp{
+            float: left;
+            margin-left:0px;
+            margin-top: 15px;
+            font-size:12px;
+            color: #6f6f6f;
+            font-weight: 500;
+         }
+         
+         .main-view > .patient-data-read > .notification-text{
+            position: relative;
+            margin-left:0px;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #000000;
+            font-weight: 500;
+            font-size:12px;
+        }
+    }
+    .notify{ 
+        float:right;
+        margin-right:-110px;
+        margin-top:56px;
+        width: 452px;
+        height: 100%;
+        white-space: pre-line;
+    }
+    .notify > .notify1 {
+        height: 72px;  
+        width: 452Px; 
+    }
+
+    .alert-icon{
+     position: relative;
+      background-color: #da1e28;
+      width:18px ;
+      height:18px;
+      border-radius: 33px;
+      color: white;
+      right: 30px;
+      top:6px;
+      padding: 4px 5px 4px;
+      font-size:11px;
+    }
+      
+    .alert-icon-1{
+        position: relative;
+         background-color: #da1e28;
+         width:18px ;
+         height:18px;
+         border-radius: 33px;
+         color: white;
+         right: -320px;
+         top:6px;
+         font-size:11px;
+         text-align: center;
+         padding-top: 4px;
+       }
+
+   
     .header-right-user {
         width: auto;
         margin-right: 15px;
+        margin-top: 15px;
         color: #fff;
         display: flex;
         border: none;        
@@ -27,6 +261,7 @@
         .header-right-text {
             margin: 0 5px 0 5px;
         }
+      
     }
     .header-panel {
         background-color: #007D79;

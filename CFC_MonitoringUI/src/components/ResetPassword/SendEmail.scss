@@ -1,0 +1,208 @@
+.sendEmail-container {
+    background-color: #F4F4F4;
+    min-height: 680px;
+
+    .forgot_pwd {
+        text-align: center;
+        margin-top: 70px;
+        color: #007D79;
+        font-size: 13px;
+    }
+
+    .form-container {
+        height: auto;
+        width: 35%;
+        top: 70px;
+        left: 32.5%;
+        background-color: #fff;
+
+        .btn-div {
+            text-align: center;
+        }
+
+        .header-div-sub {
+            margin-top: 10px;
+            background-color: #fff;
+            display: flex;
+            justify-content: flex-end;
+            
+        }
+
+        .header-div {
+            margin-top: 10px;
+            .header1 {
+                color: #161616;
+                margin-top: 8px;
+                font-weight: 600;
+                font-size : 20;
+            }
+            .header {
+                color: #161616;
+                margin-top: 38px;
+                font-weight: 600;
+            }
+            .sub-header {
+                color: #393939;
+                line-height: 25px;
+            }
+            .sub-div {
+                margin-top: 30px;
+                margin-bottom: 30px;
+                
+                line-height: 25px;
+            }
+        }
+    } 
+
+    .form-style {
+        margin-top: 30px;
+        padding-bottom: 64px;
+
+        .text-divider {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            margin: 0px 0;
+            background-color: rgba(0, 0, 0, 0.16);
+            height: 0.5px;
+        }
+
+        .text-divider-color {
+            background-color: #000000;
+        }
+
+        .rememberme {
+            display: inline-flex;
+
+            svg {
+                margin: 10px 5px;
+                fill: #393939;
+            }
+        }
+
+        .button-div {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            margin-top: 53px;
+           
+
+            .bx--btn {
+                width: 50%;
+                font-size: 12px;
+                height: 0;
+            }
+            .secondary-div {
+                background-color: #fff;
+                color: #007D79;
+
+                span {
+                    position: absolute;
+                }
+            }
+            .primary-div {
+                background-color: #007D79;
+            }
+            .login-arrow {
+                fill: #fff;
+                margin-right: -40px;
+            }
+        }
+
+        .form-div {
+            margin-left: -17px;
+            margin-right: -17px;
+            padding-left: +17px;
+            padding-right: +17px;
+            padding-bottom: 1px;
+        }
+        .form-div-invalid {
+             margin-left: -17px;
+             margin-right: -17px;
+             padding-left: +17px;
+             padding-right: +17px;
+             padding-bottom: 1px;
+             border: 1.2px solid red;
+         }
+         .error_icon_right_div{
+            text-align: right;
+            float: right;
+            margin-top: 0px;
+            margin-right: 10px;
+            position: absolute;
+            right: 0px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        label {
+            color: #393939;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+    
+        .text-field-style {
+            background-color: #fff;
+            border: none;
+            padding: 0;
+
+            margin-top: 0px;
+            margin-bottom: 0px;
+
+             margin-left: 0px;
+        }
+
+        .text-field-style:focus {
+            outline: none;
+        }
+
+        .pwd-style {
+            position: relative;
+            display: flex;
+
+            .pwd-view {
+                position: absolute;
+                right: 0;
+                margin: 29px 10px;
+                cursor: pointer;
+            }
+        }
+        .pwd-style-error {
+            position: relative;
+            display: flex;            
+
+            .pwd-view {
+                position: absolute;
+                right: 0;
+                margin: 29px 10px;
+                cursor: pointer;
+            }
+            .error_icon{
+                width: 15px;
+                height: 15px;
+                text-align: center;
+                float: right;
+                right: 0;
+                margin: 4px 0px 10px 10px;
+            }
+            .error-text{
+                
+                font-size: 14px;
+                font-weight: normal;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: 1.29;
+                letter-spacing: 0.36px;
+                text-align: left;
+                color: #da1e28;
+            }
+        }
+    }
+}
+
+.loader-login {
+    circle {
+        stroke: #007D79;
+    }
+}
+

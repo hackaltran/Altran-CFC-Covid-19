@@ -1,297 +1,671 @@
-import React, { Component } from 'react';
-import { View, Text, TextInput, StyleSheet, Image, ScrollView, Picker, Modal, KeyboardAvoidingView } from 'react-native';
-import { Button } from 'react-native-elements';
-import { connect } from 'react-redux';
-import Camera from './CameraComponent'
-import { logout } from '../redux/ActionCreators';
+import React, { Component } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Image,
+  ScrollView,
+  Picker,
+  TouchableOpacity,
+  ActivityIndicator,
+  KeyboardAvoidingView,
+} from "react-native";
+import { Button } from "react-native-elements";
+import { connect } from "react-redux";
+import { logout, generateOTP,fetchUser } from "../redux/ActionCreators";
+import { updatePatientDetails, loginUser } from "../redux/ActionCreators";
+import Camera from "./CameraComponent";
+import { EventRegister } from "react-native-event-listeners";
+import Icon from "react-native-vector-icons/FontAwesome";
+import PhoneInput from "react-native-phone-input";
+import Modal from "react-native-modal";
+import ResetNumberComponents from "./ResetNumberComponent";
 
+const mapStateToProps = (state) => {
+  return {
+    user: state.user,
+  };
+};
 
-
-const mapStateToProps = state => {
-    return {
-        user: state.user
-    }
-}
-
-const mapDispatchToProps = dispatch => ({
-    logout: () => dispatch(logout())
-})
-
+const mapDispatchToProps = (dispatch) => ({
+  logout: () => dispatch(logout()),
+  loginUser: (userObj) => dispatch(loginUser(userObj)),
+  updatePatientDetails: (userId, image, userObj) =>
+    dispatch(updatePatientDetails(userId, image, userObj)),
+  generateOTP: (mobilenum, userObj) =>
+    dispatch(generateOTP(mobilenum, userObj)),
+    fetchUser: (userId) => dispatch(fetchUser(userId)),
+});
+var isLogout = false;
 class PersonalInformation extends Component {
+  callBackPhoto = (imageUrl) => {
+    this.setState({
+      imageSteam: imageUrl,
+      enabled: true,
+    });
+  };
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            age: '',
-            mobile: '',
-            city: '',
-            emergency: '',
-            enabled: false
-        }
+  logout() {
+    this.setState.flag = true;
+    this.props.logout();
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      imageUrl: "",
+      name: "",
+      age: "",
+      mobile: "",
+      city: "",
+      emergencyContactNumber: "",
+      imageSteam: "",
+      enabled: false,
+      pickerData: null,
+      isModalVisible: false,
+      isVisible: false,
+      isLoading: false,
+      RequestId: "",
+      userId: "",
+    };
+    this.setState({
+      showModal: false,
+    });
+  }
+
+  updateDetails = async () => {
+    var image = this.state.imageSteam;
+
+    var userObj = {
+      name: this.state.name,
+      age: this.state.age,
+      mobileno: this.state.mobileOld,
+      location: this.state.city,
+      emergencyContactNumber: this.state.emergencyContactNumber,
+    };
+
+    // if (this.phone.isValidNumber(this.state.mobile)) {
+    //   alert("Please enter valid Mobile contact number.");
+    //   return false;
+    // }
+   
+    if (
+      userObj.emergencyContactNumber &&
+      !this.phone.isValidNumber(userObj.emergencyContactNumber)
+    ) {
+      alert("Please enter valid emergency contact number.");
+      return false;
     }
-
-    logout() {
-        this.props.logout();
+    if (!(this.state.mobile === this.state.mobileOld)) {
+    
+      isLogout = true;
+      await this.generateOTPFun(this.state.mobile, this.props.user.user.userId);
+     
+      return false;
     }
+   
 
-    handelUpdate() {
-        const userObj = {
-            name: this.state.name,
-            age: this.state.age,
-            mobileno: this.state.mobile,
-            location: this.state.city,
-            emergency: this.state.emergency
-        }
-        console.log(userObj);
+    this.setState({
+      isLoading: true,
+    });
+    console.log("userObj", image, userObj);
+    this.props.updatePatientDetails(
+      this.props.user.user.userId,
+      image,
+      userObj
+    );
+  };
+
+  async generateOTPFun(mobile, userId) {
+    if(this.props.user.user.isAppLock){
+      this.setState({
+        isLoading:false,
+              isModalVisible: true,
+            });
     }
+    else{
+    var timeOtp = new Date();
+    var otpGenObj = {
+      userId: userId,
+      timestampOtp: timeOtp,
+    };
+     await this.props.generateOTP(mobile, otpGenObj).then((response) => {
+      
+      if (response.payload.ok) {
+        this.setState({
+    isLoading:false,
+    RequestId: response.payload.request_id,
+          isModalVisible: true,
+        });
 
-    resetForm() {
-        this.state = {
-            name: '',
-            age: '',
-            mobile: '',
-            city: '',
-            emergency: '',
-            enabled: false
-        }
-    }
+        
+        //alert("Otp has been sent ");
+      } else {
+        this.setState({ isModalVisible: true });
+        alert(response.payload.msg.error_text);
+      }
+    });
+  }
+  }
 
-    componentDidMount() {
-        const { user } = this.props.user;
-        this.setState({ name: user.name, age: user.age, city: user.location, mobile: user.mobileno, emergency: user.mobileno })
-    }
+  async updateUserProfile() {
+    var image = this.state.imageSteam;
+    var userObj = {
+      name: this.state.name,
+      age: this.state.age,
+      mobileno: this.state.mobile,
+      location: this.state.city,
+      emergencyContactNumber: this.state.emergencyContactNumber,
+    };
 
-    render() {
-        const { user } = this.props.user;
-        return (
-            <ScrollView showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}>
-                {/* <KeyboardAvoidingView behavior="position"> */}
-                <View style={{ flex: 1, backgroundColor: '#f6f6f6' }} >
-                    <View style={{ flex: 1, paddingTop: 45 }}>
-                        <Text style={{ fontWeight: 'bold', fontSize: 18, marginLeft: 33, color: '#161616', paddingTop: 10 }}>
-                            Profile
-                        </Text>
-                    </View>
+    await this.props.updatePatientDetails(
+      this.props.user.user.userId,
+      image,
+      userObj
+    );
+  }
 
-                    <View style={{ flex: 9 }}>
-                        <View style={styles.formRowCustom}>
-                            <Camera healthStatus={user.healthstatus} />
-                            <Text style={styles.formLabel}>Full Name</Text>
-                            <TextInput value={this.state.name} style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 5, paddingLeft: 10 }}
-                                onChangeText={(text) => { this.setState({ name: text, enabled: true }) }}
+  componentWillMount() {
+    this.listener = EventRegister.addEventListener("UPDATE_USER", (data) => {
+      if (isLogout === false) {
+        this.setState({
+          isLoading: false,
+        });
+        const { navigate } = this.props.navigation;
+        navigate("Home");
+      }
+    });
 
-                                placeholder="Enter Full Name"
-                            />
-                        </View>
-                        <View style={styles.formRowCustom}>
-                            <Text style={styles.formLabel}>Your Age</Text>
-                            <Picker
-                                mode="dropdown"
-                                style={{ backgroundColor: 'white' }}
-                                selectedValue={this.state.age}
-                                onValueChange={(itemValue, itemIndex) => this.setState({ age: itemValue, enabled: true })}                    >
-                                <Picker.Item label='1' value='1' />
-                                <Picker.Item label='2' value='2' />
-                                <Picker.Item label='3' value='3' />
-                                <Picker.Item label='4' value='4' />
-                                <Picker.Item label='5' value='5' />
-                                <Picker.Item label='6' value='6' />
-                                <Picker.Item label='7' value='7' />
-                                <Picker.Item label='8' value='8' />
-                                <Picker.Item label='9' value='9' />
-                                <Picker.Item label='10' value='10' />
-                                <Picker.Item label='11' value='11' />
-                                <Picker.Item label='12' value='12' />
-                                <Picker.Item label='13' value='13' />
-                                <Picker.Item label='14' value='14' />
-                                <Picker.Item label='15' value='15' />
-                                <Picker.Item label='16' value='16' />
-                                <Picker.Item label='17' value='17' />
-                                <Picker.Item label='18' value='18' />
-                                <Picker.Item label='19' value='19' />
-                                <Picker.Item label='20' value='20' />
-                                <Picker.Item label='21' value='21' />
-                                <Picker.Item label='22' value='22' />
-                                <Picker.Item label='23' value='23' />
-                                <Picker.Item label='24' value='24' />
-                                <Picker.Item label='25' value='25' />
-                                <Picker.Item label='26' value='26' />
-                                <Picker.Item label='27' value='27' />
-                                <Picker.Item label='28' value='28' />
-                                <Picker.Item label='29' value='29' />
-                                <Picker.Item label='30' value='30' />
-                                <Picker.Item label='31' value='31' />
-                                <Picker.Item label='32' value='32' />
-                                <Picker.Item label='33' value='33' />
-                                <Picker.Item label='34' value='34' />
-                                <Picker.Item label='35' value='35' />
-                                <Picker.Item label='36' value='36' />
-                                <Picker.Item label='37' value='37' />
-                                <Picker.Item label='38' value='38' />
-                                <Picker.Item label='39' value='39' />
-                                <Picker.Item label='40' value='40' />
-                                <Picker.Item label='41' value='41' />
-                                <Picker.Item label='42' value='42' />
-                                <Picker.Item label='43' value='43' />
-                                <Picker.Item label='44' value='44' />
-                                <Picker.Item label='45' value='45' />
-                                <Picker.Item label='46' value='46' />
-                                <Picker.Item label='47' value='47' />
-                                <Picker.Item label='48' value='48' />
-                                <Picker.Item label='49' value='49' />
-                                <Picker.Item label='50' value='50' />
-                                <Picker.Item label='51' value='51' />
-                                <Picker.Item label='52' value='52' />
-                                <Picker.Item label='53' value='53' />
-                                <Picker.Item label='54' value='54' />
-                                <Picker.Item label='55' value='55' />
-                                <Picker.Item label='56' value='56' />
-                                <Picker.Item label='58' value='57' />
-                                <Picker.Item label='59' value='59' />
-                                <Picker.Item label='60' value='60' />
-                                <Picker.Item label='61' value='61' />
-                                <Picker.Item label='62' value='62' />
-                                <Picker.Item label='63' value='63' />
-                                <Picker.Item label='64' value='64' />
-                                <Picker.Item label='65' value='65' />
-                                <Picker.Item label='66' value='66' />
-                                <Picker.Item label='67' value='67' />
-                                <Picker.Item label='68' value='68' />
-                                <Picker.Item label='69' value='69' />
-                                <Picker.Item label='70' value='70' />
-                                <Picker.Item label='71' value='71' />
-                                <Picker.Item label='72' value='72' />
-                                <Picker.Item label='73' value='73' />
-                                <Picker.Item label='74' value='74' />
-                                <Picker.Item label='75' value='75' />
-                                <Picker.Item label='76' value='76' />
-                                <Picker.Item label='77' value='77' />
-                                <Picker.Item label='78' value='78' />
-                                <Picker.Item label='79' value='79' />
-                                <Picker.Item label='80' value='80' />
-                                <Picker.Item label='81' value='81' />
-                                <Picker.Item label='82' value='82' />
-                                <Picker.Item label='83' value='83' />
-                                <Picker.Item label='84' value='84' />
-                                <Picker.Item label='85' value='85' />
-                                <Picker.Item label='86' value='86' />
-                                <Picker.Item label='87' value='87' />
-                                <Picker.Item label='88' value='88' />
-                                <Picker.Item label='89' value='89' />
-                                <Picker.Item label='90' value='90' />
-                                <Picker.Item label='91' value='91' />
-                                <Picker.Item label='92' value='92' />
-                                <Picker.Item label='93' value='93' />
-                                <Picker.Item label='94' value='94' />
-                                <Picker.Item label='95' value='95' />
-                                <Picker.Item label='96' value='96' />
-                                <Picker.Item label='97' value='97' />
-                                <Picker.Item label='98' value='98' />
-                                <Picker.Item label='99' value='99' />
-                                <Picker.Item label='100' value='100' />
-                            </Picker>
-                        </View>
-                        <View style={styles.formRowCustom}>
-                            <Text style={styles.formLabel}>Mobile Number</Text>
-                            <TextInput style={{ height: 40, borderColor: 'gray', borderWidth: 1, paddingLeft: 10 }}
-                                onChangeText={(mobile) => { this.setState({ mobile: mobile, enabled: true }) }}
-                                value={this.state.mobile}
-                                keyboardType={'number-pad'}
-                                placeholder="Mobile Number"
-                                maxLength={10}
-                            />
-                        </View>
-                        <View style={styles.formRowCustom}>
-                            <Text style={styles.formLabel}>City or Zip Code</Text>
-                            <TextInput style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 5, paddingLeft: 10 }}
-                                onChangeText={(cityinfo) => { this.setState({ city: cityinfo, enabled: true }) }}
-                                value={this.state.city}
-                                placeholder="Enter City or Zip Code"
-                            />
-                        </View>
-                        <View style={styles.formRowCustom}>
-                            <Text style={styles.formLabel}>Emergency Contact Number</Text>
-                            <TextInput style={{ height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 5, paddingLeft: 10 }}
-                                onChangeText={(emergency) => { this.setState({ emergency: emergency, enabled: true }) }}
-                                value={this.state.emergency}
-                                keyboardType={'number-pad'}
-                                placeholder="Enter Emergency Contact number"
-                                maxLength={10}
-                            />
-                        </View>
-                        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                            <View style={styles.formRowCustom} >
-                                <Button
-                                    buttonStyle={styles.buttonColor}
-                                    title='Cancel'
-                                    style={{ paddingTop: 20 }}
-                                />
-                            </View>
-                            <View style={styles.formRowCustom} >
-                                <Button
-                                    buttonStyle={styles.buttonColor}
-                                    onPress={() => this.handelUpdate()}
-                                    title='Save'
-                                    style={{ paddingTop: 20 }}
-                                    disabled={true}
-                                    activeOpacity={this.state.enabled ? 1 : 1}
-                                />
-                            </View>
-                        </View>
-                        <View style={styles.formRowCustom} >
-                            <Button
-                                buttonStyle={styles.buttonColor}
-                                onPress={() => this.logout()}
-                                title='Logout'
-                                style={{ paddingTop: 20 }}
-                            />
-                        </View>
-                    </View>
+    this.listener = EventRegister.addEventListener("VALIDATE_OTP", (data) => {
+      if (data.success === true) {
+        this.setState({ isModalVisible: false });
+        this.updateUserProfile();
+        this.logout();
+
+        // alert("Mobile number update sucessfully, Please login again");
+      }
+    });
+  }
+
+  resetForm() {
+    this.state = {
+      imageUrl: "",
+      name: "",
+      age: "",
+      mobile: "",
+      city: "",
+      emergencyContactNumber: "",
+      enabled: false,
+      isVisible: false,
+    };
+  }
+
+  componentDidMount() {
+    const { navigation } = this.props;
+    this.setState({
+      pickerData: this.phone.getPickerData(),
+    });
+    this.focusListener = navigation.addListener("didFocus", () => {
+      const { user } = this.props.user;
+      this.mobileOld = user.mobileno;
+      this.cameraCallback = true;
+      this.setState({
+        imageUrl: user.imageUrl,
+        name: user.name,
+        age: user.age,
+        city: user.location,
+        mobile: user.mobileno,
+        mobileOld: user.mobileno,
+        emergencyContactNumber: user.emergencyContactNumber,
+        enabled: false,
+      });
+      this.focusNumber = Math.random();
+    });
+  }
+
+  selectPhone(phone) {
+    this.setState({
+      emergencyContactNumber: this.phone.getValue(),
+    });
+  }
+
+  selectMobileNum(phone) {
+    this.setState({ mobileno: this.phone.getValue(), enabled: true });
+  }
+
+  toggleModal = () => {
+    this.setState({ mobileno: this.state.mobileOld });
+    this.setState({ isModalVisible: false });
+  };
+
+  render() {
+    const { navigate } = this.props.navigation;
+    const { user } = this.props.user;
+    var options =[];
+     for(let i = 0; i < 121; i++){
+      options.push(i.toString());
+     }
+
+    return (
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={{ flex: 1, backgroundColor: "#f6f6f6" }}>
+          <Modal
+            animationType={"fade"}
+            transparent={true}
+            visible={this.state.isLoading}
+            onBackdropPress={() => this.setState({ isVisible: false })}
+            onRequestClose={() => {
+              this.setState({ isLoading: false });
+            }}
+          >
+            <View
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                flexDirection: "row",
+                backgroundColor: "#ffffff",
+                opacity: 0.4,
+              }}
+            >
+              <View style={{ flex: 1, alignSelf: "center" }}>
+                <ActivityIndicator
+                  size="large"
+                  alignSelf="center"
+                  color="#512DA8"
+                />
+              </View>
+            </View>
+          </Modal>
+
+          <Modal
+            style={{ margin: 0 }}
+            coverScreen={true}
+            animationType={"fade"}
+            onBackButtonPress={() => this.toggleModal()}
+            transparent={false}
+            visible={this.state.isModalVisible}
+          >
+            <View
+              style={{
+                flex: 1,
+                backgroundColor: "#f6f6f6",
+                justifyContent: "center",
+                flexDirection: "column",
+              }}
+            >
+              <View
+                style={{
+                  height: 50,
+                  width: 50,
+                  marginTop: 20,
+                  marginStart: 20,
+                  backgroundColor: "#f6f6f6",
+                }}
+              >
+                <TouchableOpacity
+                  onPress={() => {
+                    this.setState({
+                      isModalVisible: !this.state.isModalVisible,
+                    });
+                  }}
+                >
+                  <Icon
+                    name="angle-left"
+                    size={35}
+                    color="#000000"
+                    type="font-awesome"
+                  />
+                </TouchableOpacity>
+              </View>
+              <ResetNumberComponents
+               // mobile={this.state.mobile}
+                mobile={user.mobileno}
+                flag={true}
+                RequestId={this.state.RequestId}
+              />
+            </View>
+          </Modal>
+
+          <View
+            style={{
+              flex: 1,
+              paddingTop: 10,
+              flexDirection: "row",
+              textAlign: "left",
+              marginTop: 10,
+              marginStart: 5,
+            }}
+          >
+            <TouchableOpacity
+              onPress={() => {
+                navigate("Home");
+              }}
+              style={{ marginLeft: 15, width: 25, height: 20, marginTop: 0 }}
+            >
+              <Icon
+                name="angle-left"
+                size={35}
+                color="#000"
+                type="font-awesome"
+              />
+            </TouchableOpacity>
+            <Text
+              style={{
+                fontSize: 25,
+                height: 35,
+                marginLeft: 5,
+                color: "#161616",
+                fontWeight: "bold",
+                textAlignVertical: "center",
+                textAlign: "center",
+              }}
+              adjustsFontSizeToFit={true}
+            >
+              Profile
+            </Text>
+          </View>
+
+          <View style={{ flex: 1 }}>
+            <View style={styles.formRowCustomCamera}>
+              <Camera
+
+                healthStatus={user.healthstatus}
+                userImage={this.state.imageUrl}
+                key={this.focusNumber}
+                callbackFromCamera={this.callBackPhoto}
+                cameraCallback={this.cameraCallback}
+              />
+            </View>
+            <View style={styles.formRowCustom}>
+              <Text style={{ fontSize: 18, marginBottom: 5, marginTop: 0 }}>
+                Full Name
+              </Text>
+              <TextInput
+                value={this.state.name}
+                style={{
+                  height: 40,
+                  borderColor: "#e2e1e1",
+                  fontSize: 18,
+                  borderWidth: 1,
+                  marginTop: 1,
+                  paddingLeft: 10,
+                  backgroundColor: "#FFFFFF",
+                }}
+                onChangeText={(text) => {
+                  this.setState({ name: text, enabled: true });
+                }}
+                placeholder="Enter Full Name"
+              />
+            </View>
+            <View style={styles.formRowCustom}>
+              <Text style={styles.formLabel}>Your Age </Text>
+              <View
+                style={{
+                  height: 40,
+                  borderColor: "#e2e1e1",
+                  borderWidth: 1,
+                  backgroundColor: "white",
+                }}
+              >
+
+
+<Picker
+   style={{flex:1}}
+    mode="dropdown"
+    selectedValue={this.state.age}
+    onValueChange={(itemValue, itemIndex) =>
+                    this.setState({ age: itemValue, enabled: true })
+                  }
+                >
+    {options.map((item, index) => {
+        return (<Picker.Item label={item} value={index} key={index}/>) 
+    })}
+</Picker>
+
+              </View> 
+            </View>
+            <View style={styles.formRowCustom}>
+              <Text style={styles.formLabel}>Mobile Number</Text>
+             
+              <View
+                style={{
+                  height: 40,
+                  borderColor: "gray",
+                  borderWidth: 1,
+                  marginTop: 5,
+                  paddingLeft: 10,
+                  fontSize: 18,
+                  backgroundColor: "#FFFFFF",
+                }}
+              >
+                <PhoneInput
+                  style={{
+                    fontSize: 20,
+                    backgroundColor: "#FFFFFF",
+                    flex: 1,
+                    marginBottom: 1,
+                    borderColor: "gray",
+                  }}
+                  initialCountry=" "
+                  flagStyle={{ fontSize: 18 }}
+                  textStyle={{ fontSize: 18 }}
+                  textProps={{ keyboardType: "number-pad", maxLength: 15 }}
+                  value={this.state.mobile}
+                  key={this.focusNumber}
+                  ref={(ref) => {
+                    this.phone = ref;
+                  }}
+                  onChangePhoneNumber={(mobile) => {
+                    this.setState({
+                      mobile: mobile,
+                      enabled: true,
+                      enableSave: true,
+                    });
+                  }} ///
+                />
+              </View>
+            </View>
+            <View style={styles.formRowCustom}>
+              <Text style={styles.formLabel}>City or Zip Code</Text>
+              <TextInput
+                style={{
+                  height: 40,
+                  borderColor: "#e2e1e1",
+                  borderWidth: 1,
+                  marginTop: 5,
+                  paddingLeft: 10,
+                  fontSize: 18,
+                  backgroundColor: "#FFFFFF",
+                }}
+                onChangeText={(city) => {
+                  this.setState({
+                    city: city,
+                    enabled: true,
+                    enableSave: true,
+                  });
+                }}
+                value={this.state.city}
+                placeholder="Enter City or Zip Code"
+              />
+            </View>
+
+            <View style={styles.formRowCustom}>
+              <Text style={styles.formLabel}>Emergency Contact Number</Text>
+
+              <View>
+                <View
+                  style={{
+                    height: 40,
+                    borderColor: "gray",
+                    borderWidth: 1,
+                    marginTop: 5,
+                    paddingLeft: 10,
+                    fontSize: 18,
+                    backgroundColor: "#FFFFFF",
+                  }}
+                >
+                  <PhoneInput
+                    style={{
+                      fontSize: 20,
+                      backgroundColor: "#FFFFFF",
+                      flex: 1,
+                      marginBottom: 1,
+                      borderColor: "gray",
+                    }}
+                    initialCountry=" "
+                    flagStyle={{ fontSize: 18 }}
+                    textStyle={{ fontSize: 18 }}
+                    textProps={{ keyboardType: "number-pad", maxLength: 15 }}
+                    value={this.state.emergencyContactNumber}
+                    key={this.focusNumber}
+                    ref={(ref) => {
+                      this.phone = ref;
+                    }}
+                    onChangePhoneNumber={(phoneNumber) => {
+                      this.selectPhone(phoneNumber);
+                      this.setState({
+                        enabled: true,
+                      });
+                    }} ///
+                  />
                 </View>
-            </ScrollView>
-        )
-    }
+              </View>
+            </View>
+            <View style={{ flexDirection: "row", justifyContent: "center" }}>
+              <View style={styles.formRowCustom}>
+                <Button
+                  buttonStyle={{
+                    backgroundColor: "#FFFFFF",
+                    color: "#007d79",
+                    borderColor: "#007d79",
+                    borderWidth: 2,
+                  }}
+                  titleStyle={{ color: "#007d79" }}
+                  title="Cancel"
+                  type="outline"
+                  onPress={() => {
+                    navigate("Home");
+                  }}
+                  style={{ paddingTop: 20 }}
+                />
+              </View>
+              <View style={styles.formRowCustom}>
+                <Button
+                  buttonStyle={{
+                    backgroundColor: "#007d79",
+                    borderColor: "#ffffff00",
+                    borderWidth: 2,
+                  }}
+                  titleStyle={{ color: "#FFFFFF" }}
+                  type={this.state.enabled ? "outline" : "solid"}
+                  onPress={() => this.updateDetails()}
+                  title="Save"
+                  style={{ paddingTop: 20 }}
+                  disabled={!this.state.enabled}
+                  activeOpacity={this.state.enabled ? 1 : 1}
+                />
+              </View>
+            </View>
+
+            <View style={styles.formRowCustom}>
+              <Button
+                buttonStyle={{
+                  backgroundColor: "#007d79",
+                  color: "#FFFFFF",
+                  borderColor: "#007d79",
+                }}
+                onPress={() => this.logout()}
+                title="Logout"
+                style={{ paddingTop: 20 }}
+              />
+            </View>
+          </View>
+        </View>
+      </ScrollView>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#f6f6f6',
-        padding: 20
-    },
-    formRowCustom: {
-        flex: 1,
-        justifyContent: 'flex-start',
-        alignItems: 'stretch',
-        margin: 10,
-        marginTop: 15
-    },
-    formRow: {
-        alignItems: 'flex-start',
-        justifyContent: 'center',
-        flex: 1,
-        flexDirection: 'row',
-        margin: 10
-    },
-    formCol: {
-        alignItems: 'stretch',
-        flex: 1,
-        flexDirection: 'column',
-    },
-    formLabel: {
-        fontSize: 18,
-        marginBottom: 5
-    },
-    formItem: {
-        flex: 1
-    },
-    buttonColor: {
-        backgroundColor: '#007d79',
-        borderColor: '#007d79',
-        borderWidth: 2,
-        borderRadius: 2
-    }
+  container: {
+    flex: 1,
+    backgroundColor: "#f6f6f6",
+    padding: 20,
+  },
+  formRowCustom: {
+    flex: 1,
+    justifyContent: "flex-start",
+    alignItems: "stretch",
+    margin: 15,
+    marginTop: 15,
+  },
+  formRow: {
+    alignItems: "flex-start",
+    justifyContent: "center",
+    flex: 1,
+    flexDirection: "row",
+    margin: 10,
+  },
+  formCol: {
+    alignItems: "stretch",
+    flex: 1,
+    flexDirection: "column",
+  },
+  formLabel: {
+    fontSize: 18,
+    marginBottom: 5,
+  },
+  formItem: {
+    flex: 1,
+  },
+  buttonColor: {
+    color: "#007d79",
+    borderColor: "#007d79",
+  },
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  button: {
+    backgroundColor: "#fff",
+    borderRadius: 20,
+    padding: 10,
+    marginBottom: 20,
+    shadowColor: "#303838",
+    shadowOffset: { width: 0, height: 5 },
+    shadowRadius: 10,
+    shadowOpacity: 0.35,
+  },
+  modalLayout: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#00BCD4",
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: "#fff",
+    marginTop: 80,
+    marginLeft: 40,
+  },
+  PhoneInputInput: {
+    height: 40,
+  },
+  formRowCustomCamera: {
+    flex: 1,
+    justifyContent: "flex-start",
+    alignItems: "stretch",
+    margin: 15,
+    marginTop: 10,
+  },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PersonalInformation);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PersonalInformation);

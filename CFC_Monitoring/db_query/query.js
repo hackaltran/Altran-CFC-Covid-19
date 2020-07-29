@@ -25,6 +25,14 @@ module.exports = {
         };
     },
 
+    searchEmail: function (mail) {
+        return {
+            "selector": {
+                "email": mail
+            }
+        };
+    },
+
     searchPositiveForDoctor: function (doctorId) {
         return {
             "selector": {
@@ -57,10 +65,20 @@ module.exports = {
                 "_id": patientId
             },
             "fields": [
-                "doctorscreening"
+                "history"
             ]
         };
     }, 
+    findChatByPatientId: function (patientId) {
+        return {
+            "selector": {
+                "_id": patientId
+            },
+            "fields": [
+                "doctorscreening"
+            ]
+        };
+    },
 
     getAllPatients: function () {
         return {
@@ -76,6 +94,22 @@ module.exports = {
             },
             "fields": [
                 "_id", "name"
+            ]
+        };
+    },
+    getAllAdmin: function () {
+        return {
+            "selector": {
+                "usertype": "admin"
+            }
+        };
+    },
+    getAllUser: function () {
+        return {
+            "selector": {
+            },
+            "fields": [
+                "_id", "name","gender","mobileno","usertype","email"
             ]
         };
     }

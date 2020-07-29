@@ -53,20 +53,60 @@
 .alert_style {
   position: absolute;
   border: 1px solid #DA1E28;
-  width: 66px;
+  min-width: 58px;
   color: #fff;
-  top: -6px;
+  top: -9px;
   right: -6px;
   display: flex;
   height: 22px;
-  font-weight: 600;
+  font-weight: 400;
   background-color: #DA1E28;
   border-radius: 33px;
+  border-color:#DA1E28;
+  justify-content: center;
 }
 
 .alert_label {
-  font-size: 9px;
-  margin: 6px 0 0 6px;
+  font-size: 12px;
+  margin: 3px 0 0 0px;
+  color:#ffffff;
+}
+
+.new_alert_style {
+  position: absolute;
+  min-width: 58px;
+  color: #fff;
+  top: -9px;
+  right: -6px;
+  display: flex;
+  height: 22px;
+  font-weight: 400;
+  background-color:#24a148;
+  border-radius: 33px;
+  border-color:#DA1E28;
+  justify-content: center;
+}
+ .new_alert_style >  .new_alert_label{
+  font-size: 12px;
+  margin: 4px 0 0 0px;
+  color: #ffffff
+  ;;
+}
+
+.alert_style_new_sos {
+  position: absolute;
+  border: 1px solid #DA1E28;
+  min-width: 58px;
+  color: #fff;
+  top: -9px;
+  right: 60px;
+  display: flex;
+  height: 22px;
+  font-weight: 400;
+  background-color: #DA1E28;
+  border-radius: 33px;
+  border-color:#DA1E28;
+  justify-content: center;
 }
 
 .patients_card_view_container {
@@ -78,7 +118,8 @@
       background-color: white;
       margin: 0 12px 24px 0;
       color: gray;
-      border: 1px solid #DCDCDC;
+      border: 2px solid #e8e8e8
+      ;
       outline-style: auto;
       position: relative;
       background: linear-gradient(360deg, #F8F8F8 0%,#F8F8F8 73%,white 50%,white 50%,white 100%);
@@ -143,7 +184,7 @@
 
   .operator-card-view{
       display: inline-block;
-      margin: 0 10px 10px 0;
+      margin: 0 19px 19px 0;
       color: #fff;
       border-radius: 2px;
       position: relative;
@@ -151,21 +192,36 @@
       width: 12%;
 
       .id-style {
-          line-height: 30px;
+          line-height: 37px;
           font-size: 14px;
       }
       .sos-alert {
+          border-radius: 64px / 68px;
           position: absolute;
-          border: 2px solid #DA1E28;
-          width: 20px;
+          width: 22px;
           height: 20px;
-          top: -8px;
-          left: -8px;
+          top: -5px;
+          right: -5px;
           background-color: #fff;
+          border-color: #DA1E28
       }
+      .sos-alert-notify{
+        position: absolute;
+        width: 22px;
+        height: 20px;
+        top: -9px;
+        right: -5px;
+        background-color: #fff;
+        border-color: #DA1E28    
+    }
       .sos-icon {
           fill: #DA1E28;
       }
+      .notify-img{
+        width: 28px;
+        height: 28px;
+      }
+    
   }
 }
 

@@ -1,7 +1,10 @@
+import { configSetting } from '../AppConfiguration.js';
+
 /**
  * @description Base url of API
  */
-const BASE_URL = "https://c4c-monitorapi.df.r.appspot.com/";
+
+const BASE_URL = configSetting.BASE_URL + '/';
 
 function getapi(endpoint) {
   const apiObj = {

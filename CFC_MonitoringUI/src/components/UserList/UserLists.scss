@@ -1,0 +1,197 @@
+.dropdown-search {
+    border: 1px solid #007D79;
+    height: 100%;
+    margin: 0 0 0 10px;
+  
+    #dropdown-field-label-dropdown-search {
+        .bx--list-box__menu-icon > svg {
+            fill: #007D79;
+        }
+    }
+    #dropdown-search__menu {
+      left: -40px;
+      min-width: 150px;
+      min-height: 80px;
+    }
+  }
+  .button1-div {
+    left: 0;
+    padding-left: 20px;
+
+    .bx--btn {
+        width: 50%;
+        font-size: 12px;
+        height: 0;
+    }
+    .secondary1-div {
+        background-color: #fff;
+        color: #007D79;
+        width: 110px;
+        height: 35px;
+        font-size: 14px;
+        border : solid 1.5px #007d79;
+        span {
+            position: absolute;
+        }
+    }
+    .primary-div-user {
+        background-color: #007D79;
+        width: 156px;
+        font-size: 14px;
+        height: 30px;
+    }
+    .dropdown-div {
+      width: 102px;
+      height: 0px;
+      border: solid 1px #007d79;
+      background-color: #ffffff;
+    }
+    .login-arrow {
+        fill: #fff;
+        margin-right: -40px;
+    }
+    .cheveron-arrow {
+      fill: #007D79;
+      margin-right: -40px;
+      transform: {rotateX: '90deg'}
+  }
+}
+.selection {
+    flex: 1;
+    .dropdown-userList {
+      background-color: white;
+      border: 1px solid #007d79;
+      color: #007d79; //007d79
+     
+      box-shadow : "none";
+      min-height : "200px";
+  
+        margin-top: 0px;
+        margin-bottom: 0px;
+        width: 156px;
+        height: 50px;
+      .bx--list-box__menu {
+        min-height: 60px;
+        background-color: '#FFFF00';
+        .bx--list-box__menu-item {
+          .bx--list-box_menu-item_option {
+           overflow: auto;
+          }
+        }
+      }
+      .dropdown-menu {
+        height: 70px;
+        overflow-y: scroll;
+      }
+    }
+  }
+  .table-div{
+    text-align: center;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    border: 3px solid #FFFFFF;
+    margin-top: 18px;
+    width: 100%;
+
+    .table-tr{
+        border: 1px solid #ffffff;
+        padding: 8px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        text-align: left;
+        padding-left: 10px;
+
+        .td-title{
+          font-style: normal;
+          letter-spacing: 0.31px;
+          text-align: left;
+          color: #393939;
+          font-size : 14px;
+          letter-spacing: 0.14px;
+        }
+        .cheveron-arrow {
+          fill: #a8a8a8;
+      }   
+    }
+  
+    .table-th {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      padding-left: 10px;
+      text-align: left;
+      font-size: 14px;
+      font-weight: 600;
+      background-color: #e0e0e0;
+      color: #393939;
+
+      .th-title{
+        font-style: bold;
+        letter-spacing: 0.31px;
+        text-align: left;
+        color: #393939;
+        font-weight: 600;
+        font-size : 14px;
+        letter-spacing: 0.14px;
+      }
+    }
+  }
+
+  .div-drop{
+    color: #393939;
+    background-color: red($color: #000000);
+    display: "flex";
+  }
+  .div-check1{
+    background-color: #EEE;
+    //margin: 62px 258px;
+    padding: 5px;
+    width: 200px;
+    height: 30px;
+    position: relative;  
+  }
+  .container{
+    width: 120px;
+    height: 30px;
+    position: relative;
+    background-color: #ff0;
+    margin: 20px;
+
+    .box{
+      width: 120px;
+      height: 30px;            
+      position: absolute;
+      background-color: #EEE;
+      top: 0;
+      left: 0;
+      opacity: 0.8;  /* for demo purpose  */
+  }
+}
+
+.dropdown-invisible {
+  background-color: white;
+  border: 1px solid #ffffff;
+  color: '#00000000'; //007d79
+ 
+  box-shadow : "none";
+  min-height : "20px";
+  font-size: 10px;
+  padding: 0;
+
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 190px;
+    height: 50px;
+  .bx--list-box__menu {
+    min-height: 60px;
+    background-color: '#FFFF00';
+    .bx--list-box__menu-item {
+      .bx--list-box_menu-item_option {
+       overflow: auto;
+      }
+    }
+  }
+  .dropdown-menu {
+    height: 30px;
+    overflow-y: scroll;
+  }
+}
