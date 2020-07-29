@@ -60,8 +60,8 @@ We have completed and will present the overall platform design, flow, and an ini
 
 ## Project roadmap
 
-##### Detailed Roadmap is available at [PATH](offering-docs/Call%20for%20Code%20All%20is%20Well%20Platform%20Deck%20April%20V1.2.pdf)
-
+##### Detailed Roadmap is available at [PATH](offering-docs/Call%20for%20Code%20Are%20You%20Well%20Platform%20Deck%20Jul%20v1.0.pdf)
+Call for Code Are You Well Platform Deck Jul v1.0.pdf
 ![Roadmap](offering-docs/Call-for-Code-All-is-Well-Platform-C-19.jpg)
 
 
