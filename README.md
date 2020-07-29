@@ -12,6 +12,8 @@
 1. [Project roadmap](#project-roadmap)
 1. [UX Design](#ux-design)
 1. [Getting started](#getting-started)
+1. [Deployment model](#deployment-model)
+1. [Configurationl](#configuration-parameters)
 1. [Live demo](#live-demo)
 1. [Built with](#built-with)
 1. [Versioning](#versioning)
