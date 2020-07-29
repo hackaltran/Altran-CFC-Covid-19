@@ -13,7 +13,7 @@
 1. [UX Design](#ux-design)
 1. [Getting started](#getting-started)
 1. [Deployment model](#deployment-model)
-1. [Configuration](#configuration-parameters)
+1. [Configuration](#configuration)
 1. [Live demo](#live-demo)
 1. [Built with](#built-with)
 1. [Versioning](#versioning)
