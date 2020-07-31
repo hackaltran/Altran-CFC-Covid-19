@@ -150,8 +150,8 @@ To use solution and existing deployed infrastructure, you can register yourself 
 
 ## Versioning
 
-Call for Code github for April 2020 submission is available under git tag v1.0.0.0
-Call for Code github for July 2020 submission is available under git tag v2.0.0.0
+* Call for Code github for April 2020 submission is available under git tag v1.0.0.0
+* Call for Code github for July 2020 submission is available under git tag v2.0.0.0
 
 
 ## Authors
