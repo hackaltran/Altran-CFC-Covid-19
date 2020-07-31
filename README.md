@@ -112,10 +112,10 @@ Use the following URL's to access the existing infrastructure -
 
 | Infrastructure             | Deployment |
 | ------                     | ------ |
-| Patient Backend Service    | [Patient Restful APIs](http://52.117.130.141:30551/api/user/9999511481) |
 | Patient App                | [Mobile App - Patient](https://github.com/hackaltran/Altran-CFC-Covid-19/tree/master/CFC_UI/apk) |
-| Monitoring Backend Service | [Monitoring Restful APIs](http://52.117.130.139:31562/doctors) |
 | Moniroting Dashboard       | [Monitoring Dashboard](http://52.117.130.142:32639/login) |
+| Patient Backend Service    | [Patient Restful APIs are available at IP: 52.117.130.141, Port: 30551] |
+| Monitoring Backend Service | [Monitoring Restful APIs are available at IP: 52.117.130.139, Port: 31562] |
 
 #### Default Credentials
 To use solution and existing deployed infrastructure, you can register yourself as a new patient or you can use the default credentials saved in our cloudant database placed at respective paths-
@@ -149,7 +149,7 @@ To use solution and existing deployed infrastructure, you can register yourself 
 
 
 ## Versioning
-v1.0.0.0
+v1.1.0.0
 
 ## Authors
 
