@@ -34,7 +34,7 @@ Reduce stress on public healthcare services by providing effective care in home 
 
 ## Demo video
 
-- [Demo Video - PATH](https://vimeo.com/412342949)
+- [Demo Video - PATH](https://youtu.be/m2pl_GDp1yo)
 
 - [Additional Demo Video - PATH](offering-docs/are%20you%20well_APP_v4.wmv)
 
@@ -149,7 +149,8 @@ To use solution and existing deployed infrastructure, you can register yourself 
 
 
 ## Versioning
-v1.1.0.0
+Call for Code github for April 2020 submission is available under git tag v1.0.0.0
+Call for Code github for July 2020 submission is available under git tag v2.0.0.0
 
 ## Authors
 
